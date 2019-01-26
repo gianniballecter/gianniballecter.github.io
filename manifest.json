@@ -1,8 +1,8 @@
 {
-    "short_name": "Attendees",
-    "name": "Attendees",
+    "short_name": "PnP",
+    "name": "PnP-App",
     "background_color": "#FFF",
-    "theme_color": "#00897b", 
+    "theme_color": "#1e46be", 
     "start_url": "./",
     "display": "standalone",
     "icons": [
