@@ -1,64 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
-    <title>News</title>
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#00897b" />
-    <style>
-        body{
-            margin: 0;
-            background-color: #CFD8DC;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-        }
-        header{
-            background-color: #00897B;
-            color: whitesmoke;
-            position: fixed;
-            top: 0;
-            right: 0;
-            left: 0;
-            font-size: 22px;
-            padding: 30px 40px;
-            font-weight: bold;
-        }
-
-        #attendees {
-            margin-top: 100px;
-        }
-        .card {
-            background-color: white;
-            padding: 30px;
-            margin: 20px;
-            border-radius: 3px;
-            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
-        }
-        .card h2 {
-            margin-top: 0;
-        }
-    
-    </style>
-     
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> <!--disable Zoom, aber Zoom in Browser möglich-->
+	<meta name="description" content="My little Pen and Paper App.">
+	<meta name="keywords" content="web rpg game pnp">
+	<meta name="theme-color" content="#1e46be" />
+	
+	<title>Giannis PnP-App</title>
+	<link rel="manifest" href="manifest.json">
+	<link href="styles.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-    <header>Ueberschrift</header>
+<a href="#hauptmenu"><img src="images/icon-192.png" alt="Zum Start" id="backbild"></a>
+	
+<section id="hauptmenu">
+	<!--<header>Ueberschrift</header>-->
+	<div align="center">
 
-    <div id="attendees"> </div>
+		<div style = "display: inline-table;"> <img src="images/download.png" alt="Download" onclick="javascript:openDownload()" class="cloudpic"> </div> 
+		<div style = "display: inline-table;"> <h1 style="vertical-align:middle;">&nbsp; Hauptmenü &nbsp; </h1> </div> 
+		<div style = "display: inline-table;"> <img src="images/upload.png" alt="Upload" onclick="javascript:uploadThisChar()" class="cloudpic"> </div>  <br><br>
 
-    <script>
-        console.log("I am here!"); 
+		<div style = "display: inline-table;"><abutton onclick="javascript:openSkilltrees()">Domänen</abutton></div> 
+		<div style = "display: inline-table;"><abutton onclick="javascript:openAnsehen()">Ansehen</abutton> </div> 
+		<div style = "display: inline-table;"><abutton>Inventar</abutton> </div><br><br>
+
+		<arrowbutton type="button" onclick="javascript:changeChar(false)">&#8249;</arrowbutton>
+		<span id="charnamefeld">Beispielcharakter</span> 
+		<arrowbutton type="button" onclick="javascript:changeChar(true)">&#8250;</arrowbutton> <br> <br>
+		<div style = "display: inline-table;"><abutton>Probe</abutton> </div> 
+		<div style = "display: inline-table;"><abutton>Kampf</abutton> </div><br><br>
+		<abutton onclick="javascript:openErstellung()">Erstellen</abutton> <br>
+    </div>
+</section>
+
+<section id="skilltreepage">
+	<div align="center" class="centertoframe-div">
+		<h1>Domänen</h1>
+		<button type="button" onclick="javascript:SaveTree()">Speichern</button>
+		<button type="button" onclick="javascript:openSkilltrees()">Zurücksetzen</button>
+		<span id = "testTxt">test</span>
+	</div>
+	<div align="center"><iframe src="skilltrees.htm" height="750" width="1000" id="TreeIFrame"></iframe> </div>
+</section>
+
+<section id="pageAnsehen">
+	<div align="center">
+		<h1 id="charnamefeld2">Charaktername</h1>
+
+		<p id="charzusammenfassung"></p> <br><br>
+
+		<div style = "display: inline-table;"><abutton>Leveln</abutton></div> 
+		<div style = "display: inline-table;"><abutton>Löschen</abutton> </div><br><br>
+
+		<div style = "display: inline-table;"><span>17/17 DP</span><span> Domäne</span></div> 
+		<div style = "display: inline-table;"><select id="CEdomaene">
+			<option value="Kampf">Kampf</option>
+			<option value="Kampf2">Kampf2</option>
+			<option value="Matera">Matera</option> <!-- Hier Religion entsprechend anpassen-->
+		</select></div> 
+		<div style = "display: inline-table;"><abutton onclick="javascript:AddThisTree()">anfügen</abutton> </div><br><br>
+
+		<p id="charbeschreibungdisplay"></p>
+	</div>
+</section>
+
+<section id="pageErstellen">
+	<div align="center">
+		<h1>Erstellen</h1>
+		<abutton onclick="javascript:CESpeichern()">Sichern</abutton> <br>
+		<input type="text" id="CEname" onfocus="this.value=''" value="Name"/> <br> <br>
+		<span>Volk </span> <select id="CEvolk">
+				<option value="Darnländer">Darnländer</option>
+				<option value="Gelbauge">Gelbaugen</option>
+				<option value="Gnom">Gnome</option>
+				<option value="Goblin">Goblins</option>
+				<option value="Insulaner">Insulaner</option>
+				<option value="Tokka">Tokka</option>
+				<option value="Usneari">Usneari</option>
+		</select> <br> <br>
+		<span>SI </span> <input type="number" id="CEsi" min="10" max="50" style = "width: 48px"> <br> <br>
+		<span>VT </span> <input type="number" id="CEvt" min="10" max="50" style = "width: 48px"> <br> <br>
+		<span>AT </span> <input type="number" id="CEat" min="10" max="50" style = "width: 48px"> <br> <br>
+		<span>GE </span> <input type="number" id="CEge" min="10" max="50" style = "width: 48px"> <br> <br>
+		<span>Religion </span> <select id="CEreligion">
+				<option value="Materistentum">Materistentum</option>
+				<option value="Tritheodie">Tritheodie</option>
+				<option value="Jalbhinava">Jalbhinava</option>
+				<option value="Karthumismus">Karthumismus</option>
+				<option value="audi">Naturreligion</option>
+				<option value="Pantheon">Pantheon (Honigseim)</option>	
+		</select> <br> <br>
+		<span>Stufe </span> <input type="number" id="CEstufe" min="0" max="20" style = "width: 48px"> <br> <br>
+		<textarea id="CEbeschreibung" placeholder="Beschreibung: Aussehen, Alter, etc." ></textarea>
+		<!--Klasse-->
+	</div>
+</section>
+
+<section id="pageCharDownload">
+	<div align="center">
+		<h1>Onlinespeicher</h1>
+		<abutton onclick="javascript:downloadThisCharToMyLibrary()">Download</abutton> <br>
+		<div id="dlcharcontainer"> </div>
+	</div>
+</section>
+
+<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+<script>
+  	// Initialize Firebase
+  	var config = {
+    	apiKey: "AIzaSyCgrJCcbgWL_0EP37MVL5Fzcjws4nlAjVQ",
+    	authDomain: "pandp-7f9c5.firebaseapp.com",
+    	databaseURL: "https://pandp-7f9c5.firebaseio.com",
+    	projectId: "pandp-7f9c5",
+    	storageBucket: "pandp-7f9c5.appspot.com",
+    	messagingSenderId: "255796885743"
+  	};
+ 	 firebase.initializeApp(config);
+	</script>
+	<!--<script>
         if ('serviceWorker' in navigator) {
-            console.log("Hello world!"); 
-            window.addEventListener("load", () => {
-                navigator.serviceWorker.register("sw.js")
-                    .then(console.log)
-                    .catch(console.error);
-            });
+            navigator.serviceWorker.register("sw.js")
+                .then(registration => {
+                    console.log(registration);
+                })
+                .catch(console.error);
         }
-    </script>
-
-    <script src="app.js"></script>
+	</script>-->
+	<script src="vendor/jquery.min.js"></script>
+	<script src="app.js"></script>
 </body>
 </html>
