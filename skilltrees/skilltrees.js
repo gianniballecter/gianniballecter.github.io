@@ -216,6 +216,7 @@ function skillz_installieren() {
 
 	disableTheStyles();
 	document.getElementById("Allgemein").disabled = false;
+	document.getElementById("Allgemein").href += "";
 
 	var dieserCharakter = Charakter;
 	if(InputFA.value !== ""){ //Falls wir schon Skillz im Charakter haben
@@ -255,6 +256,7 @@ function switch_style(boolpositiv)
 	else if (stylesheet.disabled == true) {stylesheet.disabled = false; document.styleSheets[2].disabled = true;}*/
 	disableTheStyles();
 	document.getElementById(alleTrees[aktuelleNummer]).disabled = false;
+	document.getElementById(alleTrees[aktuelleNummer]).href += "";
 }
 
 function disableTheStyles(){
@@ -263,4 +265,3 @@ function disableTheStyles(){
 		document.styleSheets[i].disabled = true;
 	}
 }
-
