@@ -78,7 +78,9 @@ function chooseThisCharacterToDownload(element){
   for (i = 0; i < x.length; i++) {x[i].style.backgroundColor = "#1e46be";} //andere Hintergründe blau
   chosenToDownload = $(element).text();
   $(element).css('background-color', '#000000');
-  chosenToDownload = chosenToDownload.replace(/\s+/g, ''); //unnötige Leerzeichen entfernen
+  chosenToDownload = chosenToDownload.trim(); //unnötige Leerzeichen entfernen
+  //chosenToDownload = chosenToDownload.replace(/\s+/g, ''); //unnötige Leerzeichen entfernen
+ 
 }
 
 function downloadThisCharToMyLibrary(){
