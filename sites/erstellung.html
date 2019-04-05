@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> <!--disable Zoom, aber Zoom in Browser möglich-->
+	<meta name="description" content="My little Pen and Paper App.">
+	<meta name="keywords" content="web rpg game pnp">
+	<meta name="theme-color" content="#1e46be" />
+	
+	<title>Giannis PnP-App</title>
+	<link rel="manifest" href="../manifest.json">
+	<link href="../styles.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<a href="../index.html"><img src="../images/icon-192.png" alt="Zum Start" id="backbild"></a>
+	
+<section id="pageErstellen">
+	<div align="center">
+		<h1>Erstellen</h1>
+		<abutton onclick="javascript:CESpeichern()">Sichern</abutton> <br>
+		<input type="text" id="CEname" onfocus="this.value=''" value="Name"/> <br> <br>
+		<span>Volk </span> <select id="CEvolk">
+				<option value="Darnländer">Darnländer</option>
+				<option value="Gelbauge">Gelbaugen</option>
+				<option value="Gnom">Gnome</option>
+				<option value="Goblin">Goblins</option>
+				<option value="Insulaner">Insulaner</option>
+				<option value="Usneari">Jekala</option>
+				<option value="Tokka">Tokka</option>
+				<option value="Usneari">Usneari</option>
+		</select> <br> <br>
+		
+		<span>Übrige Punkte: </span><span id="CEuPunkte">50</span> <arrowbutton type="button" onclick="javascript:changeWert(100, true)">&#8250;&#8250;</arrowbutton>
+
+		<div class="row">
+			<div class="column" align="right"> 
+				<span>Zähigkeit</span> <arrowbutton type="button" onclick="javascript:changeWert(1, false)">&#8249;</arrowbutton> <br> 
+				<span>Sinne</span> <arrowbutton type="button" onclick="javascript:changeWert(2, false)">&#8249;</arrowbutton> <br> 
+				<span>Geschick</span> <arrowbutton type="button" onclick="javascript:changeWert(3, false)">&#8249;</arrowbutton> <br> 
+				<span>Kraft</span> <arrowbutton type="button" onclick="javascript:changeWert(4, false)">&#8249;</arrowbutton> <br> 
+				<span>Willen</span> <arrowbutton type="button" onclick="javascript:changeWert(5, false)">&#8249;</arrowbutton> <br> 
+				<span>Agilität</span> <arrowbutton type="button" onclick="javascript:changeWert(6, false)">&#8249;</arrowbutton> <br> 
+				<span>Lehre</span> <arrowbutton type="button" onclick="javascript:changeWert(7, false)">&#8249;</arrowbutton> <br> 
+				<span>Charisma</span> <arrowbutton type="button" onclick="javascript:changeWert(8, false)">&#8249;</arrowbutton> <br> 
+			</div>
+			<div class="column" align="left"> 
+				<span id="CEza">3</span> <arrowbutton type="button" onclick="javascript:changeWert(1, true)">&#8250;</arrowbutton> <br> 
+				<span id="CEsi">3</span> <arrowbutton type="button" onclick="javascript:changeWert(2, true)">&#8250;</arrowbutton> <br> 
+				<span id="CEge">3</span> <arrowbutton type="button" onclick="javascript:changeWert(3, true)">&#8250;</arrowbutton> <br> 
+				<span id="CEkr">3</span> <arrowbutton type="button" onclick="javascript:changeWert(4, true)">&#8250;</arrowbutton> <br> 
+				<span id="CEwi">3</span> <arrowbutton type="button" onclick="javascript:changeWert(5, true)">&#8250;</arrowbutton> <br> 
+				<span id="CEag">3</span> <arrowbutton type="button" onclick="javascript:changeWert(6, true)">&#8250;</arrowbutton> <br> 
+				<span id="CEle">3</span> <arrowbutton type="button" onclick="javascript:changeWert(7, true)">&#8250;</arrowbutton> <br> 
+				<span id="CEch">0</span> <arrowbutton type="button" onclick="javascript:changeWert(8, true)">&#8250;</arrowbutton> <br> 
+				<br>  
+			</div>
+		</div> 
+
+		<span>Religion </span> <select id="CEreligion">
+				<option value="Materistentum">Materistentum</option>
+				<option value="Tritheodie">Tritheodie</option>
+				<option value="Jalbhinava">Jalbhinava</option>
+				<option value="Karthumismus">Karthumismus</option>
+				<option value="audi">Naturreligion</option>
+				<option value="Pantheon">Pantheon (Honigseim)</option>	
+		</select> <br> <br>
+		<span>Stufe </span> <input type="number" id="CEstufe" min="0" max="20" style = "width: 48px" value=1> <br> <br>
+		<textarea id="CEbeschreibung" placeholder="Beschreibung: Aussehen, Alter, etc." ></textarea>
+		<!--Klasse-->
+	</div>
+</section>
+	<script src="../vendor/jquery.min.js"></script>
+	<script src="global.js"></script>
+	<script src="erstellung.js"></script>
+</body>
+</html>
