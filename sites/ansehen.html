@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> <!--disable Zoom, aber Zoom in Browser möglich-->
+	<meta name="description" content="My little Pen and Paper App.">
+	<meta name="keywords" content="web rpg game pnp">
+	<meta name="theme-color" content="#1e46be" />
+	
+	<title>Giannis PnP-App</title>
+	<link rel="manifest" href="../manifest.json">
+	<link href="../styles.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<a href="../index.html"><img src="../images/icon-192.png" alt="Zum Start" id="backbild"></a>
+	
+<section id="pageAnsehen">
+	<div align="center">
+		<h1 id="charnamefeld2">Charaktername</h1>
+
+		<p id="charzusammenfassung"></p> <br><br>
+
+		<div style = "display: inline-table;"><abutton onclick="javascript:charLeveln()">Leveln</abutton></div> 
+		<div style = "display: inline-table;"><abutton onclick="javascript:charLoeschen()">Löschen</abutton> </div><br><br>
+		<div style = "display: inline-table;"><span id="domainField">hier müssten die DP hin x/y</span></div> <br><br>
+
+		<div style = "display: inline-table;"><span>Generelle Domänen</span></div> 
+		<div style = "display: inline-table;"><select id="CEdomaene1">
+			<option value="Kampf">Kampf</option>
+			<option value="Militaerausbildung">Militärausbildung</option>
+			<option value="Taktischer Kampf">Taktischer Kampf</option> 
+		</select></div> 
+		<div style = "display: inline-table;"><abutton onclick="javascript:AddThisTree(1)">anfügen</abutton> </div><br><br>
+
+		<div style = "display: inline-table;"><span>Erweiterte Domänen</span></div> 
+		<div style = "display: inline-table;"><select id="CEdomaene2">
+			<option value="Sappeur">Sappeur</option>
+			<option value="AdjanaMeesa">Adjana~Meesa</option> <!-- Hier Religion entsprechend anpassen-->
+		</select></div> 
+		<div style = "display: inline-table;"><abutton onclick="javascript:AddThisTree(2)">anfügen</abutton> </div><br><br>
+
+		<div style = "display: inline-table;"><span>Waffen - Domänen</span></div> 
+		<div style = "display: inline-table;"><select id="CEdomaene3">
+			<option value="Stangenwaffen">Stangenwaffen</option>
+			<option value="Fechten">Fechten</option>
+			<option value="Wuchwaffen">Wuchwaffen</option> 
+		</select></div> 
+		<div style = "display: inline-table;"><abutton onclick="javascript:AddThisTree(3)">anfügen</abutton> </div><br><br>
+
+		<p id="charbeschreibungdisplay"></p>
+	</div>
+</section>
+
+	<script src="../vendor/jquery.min.js"></script>
+	<script src="global.js"></script>
+	<script src="ansehen.js"></script>
+</body>
+</html>
