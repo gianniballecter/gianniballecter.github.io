@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> <!--disable Zoom, aber Zoom in Browser möglich-->
+	<meta name="description" content="My little Pen and Paper App.">
+	<meta name="keywords" content="web rpg game pnp">
+	<meta name="theme-color" content="#1e46be" />
+	
+	<title>Giannis PnP-App</title>
+	<link rel="manifest" href="../manifest.json">
+	<link href="../styles.css" type="text/css" rel="stylesheet">
+	<style>
+			.column {width:33%;}
+			.row:after {
+  				content: "";
+  				display: table;
+ 				clear: both;
+			}
+			.wichtig {font-size: 200%;}
+			
+	</style>
+</head>
+<body>
+<a href="../index.html"><img src="../images/icon-192.png" alt="Zum Start" id="backbild"></a>
+	
+<section id="pageErstellen">
+	<div align="center">
+		<!-- <h1>Probe</h1>-->
+		<br>
+		<div class="row">
+			<div class="column" align="right"> 
+				<abutton onclick="javascript:probeMachen(8)">Glück</abutton> <br> 
+				<abutton onclick="javascript:probeMachen(9)">Angriff</abutton> <br> 
+				<abutton onclick="javascript:probeMachen(0)">Zähigkeit</abutton> <br> 
+				<abutton onclick="javascript:probeMachen(1)">Sinne</abutton> <br> 
+				<abutton onclick="javascript:probeMachen(2)">Geschick</abutton> <br> 
+			</div>
+			<div class="column" align="center"> 
+				<br><br><br>
+				<span class="wichtig" id="probenfeld">Probe</span>
+				<br><br>
+				<span id="bonifeld">Boni</span>
+			</div>
+			<div class="column" align="left"> 
+				<abutton onclick="javascript:probeMachen(3)">Kraft</abutton> <br> 
+				<abutton onclick="javascript:probeMachen(4)">Willen </abutton> <br> 
+				<abutton onclick="javascript:probeMachen(5)">Agilität</abutton> <br> 
+				<abutton onclick="javascript:probeMachen(6)">Lehre</abutton> <br> 
+				<abutton onclick="javascript:probeMachen(7)">Charisma</abutton> <br> 
+			</div>
+		</div> 
+
+	</div>
+</section>
+	<script src="../vendor/jquery.min.js"></script>
+	<script src="global.js"></script>
+	<script src="probe.js"></script>
+</body>
+</html>
