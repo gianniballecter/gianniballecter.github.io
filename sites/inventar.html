@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> <!--disable Zoom, aber Zoom in Browser möglich-->
+	<meta name="description" content="My little Pen and Paper App.">
+	<meta name="keywords" content="web rpg game pnp">
+	<meta name="theme-color" content="#1e46be" />
+	
+	<title>Giannis PnP-App</title>
+	<link rel="manifest" href="../manifest.json">
+	<link href="../styles.css" type="text/css" rel="stylesheet">
+	<style>
+			#column2 {width:33%;}
+			.row:after {
+  				content: "";
+  				display: table;
+ 				clear: both;
+			}	
+	</style>
+</head>
+<body>
+<a href="../index.html"><img src="../images/icon-192.png" alt="Zum Start" id="backbild"></a>
+	
+<section id="pageErstellen">
+	<div align="center">
+		<h1>Inventar</h1>
+		<div class="row">
+			<div class="column" align="right"> 
+				<br> <input type="text" id="gegenstandName" onfocus="this.value=''" value="Gegenstand"/> 
+			</div>
+			<div class="column" align="left"> 
+				<abutton onclick="javascript:addItem()">anfügen</abutton> 
+			</div>
+		</div> 
+		<br>
+		<div class="row">
+			<div class="column" align="right" id="column2"> 
+				<!--	<abutton onclick="javascript:probeMachen(8)">Standard</abutton> <br> -->
+				<br> 
+			</div>
+			<div class="column" align="center" id="column2"> 
+					<abutton onclick="javascript:addStandard()">Standard</abutton> <br> 
+			</div>
+			<div class="column" align="left" id="column2"> 
+				<!--	<abutton onclick="javascript:probeMachen(3)">Kraft</abutton>  -->
+				<br>
+			</div>
+		</div> 
+		<div id="inventarcontainer"> </div>
+	</div>
+</section>
+	<script src="../vendor/jquery.min.js"></script>
+	<script src="inventar.js"></script>
+</body>
+</html>
