@@ -1,5 +1,0 @@
-1. Die Fähigkeiten zum Javascript hinzufügen.
-2. Invisiblylist updaten
-3. Liste im Ansehen-Fenster updaten
-4. Ein CSS copypasten und anpassen, eventuell Bilder machen
-5. Fähigkeiten umsetzen
