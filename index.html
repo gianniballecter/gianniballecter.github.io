@@ -25,78 +25,15 @@
 
 		<div style = "display: inline-table;"><abutton onclick="javascript:openSkilltrees()">Domänen</abutton></div> 
 		<div style = "display: inline-table;"><abutton onclick="javascript:openAnsehen()">Ansehen</abutton> </div> 
-		<div style = "display: inline-table;"><abutton>Inventar</abutton> </div><br><br>
+		<div style = "display: inline-table;"><abutton onclick="javascript:openInventar()">Inventar</abutton> </div><br><br>
 
 		<arrowbutton type="button" onclick="javascript:changeChar(false)">&#8249;</arrowbutton>
-		<span id="charnamefeld">Beispielcharakter</span> 
+		<span id="charnamefeld">Warten...</span> 
 		<arrowbutton type="button" onclick="javascript:changeChar(true)">&#8250;</arrowbutton> <br> <br>
-		<div style = "display: inline-table;"><abutton>Probe</abutton> </div> 
-		<div style = "display: inline-table;"><abutton>Kampf</abutton> </div><br><br>
+		<div style = "display: inline-table;"><abutton onclick="javascript:openProbe()">Probe</abutton> </div> 
+		<div style = "display: inline-table;"><abutton onclick="javascript:openKampf()">Kampf</abutton> </div><br><br>
 		<abutton onclick="javascript:openErstellung()">Erstellen</abutton> <br>
     </div>
-</section>
-
-<section id="skilltreepage">
-	<div align="center" class="centertoframe-div">
-		<h1>Domänen</h1>
-		<button type="button" onclick="javascript:SaveTree()">Speichern</button>
-		<button type="button" onclick="javascript:openSkilltrees()">Zurücksetzen</button>
-		<span id = "testTxt">test</span>
-	</div>
-	<div align="center"><iframe src="skilltrees.htm" height="750" width="1000" id="TreeIFrame"></iframe> </div>
-</section>
-
-<section id="pageAnsehen">
-	<div align="center">
-		<h1 id="charnamefeld2">Charaktername</h1>
-
-		<p id="charzusammenfassung"></p> <br><br>
-
-		<div style = "display: inline-table;"><abutton>Leveln</abutton></div> 
-		<div style = "display: inline-table;"><abutton>Löschen</abutton> </div><br><br>
-
-		<div style = "display: inline-table;"><span>17/17 DP</span><span> Domäne</span></div> 
-		<div style = "display: inline-table;"><select id="CEdomaene">
-			<option value="Kampf">Kampf</option>
-			<option value="Kampf2">Kampf2</option>
-			<option value="Matera">Matera</option> <!-- Hier Religion entsprechend anpassen-->
-		</select></div> 
-		<div style = "display: inline-table;"><abutton onclick="javascript:AddThisTree()">anfügen</abutton> </div><br><br>
-
-		<p id="charbeschreibungdisplay"></p>
-	</div>
-</section>
-
-<section id="pageErstellen">
-	<div align="center">
-		<h1>Erstellen</h1>
-		<abutton onclick="javascript:CESpeichern()">Sichern</abutton> <br>
-		<input type="text" id="CEname" onfocus="this.value=''" value="Name"/> <br> <br>
-		<span>Volk </span> <select id="CEvolk">
-				<option value="Darnländer">Darnländer</option>
-				<option value="Gelbauge">Gelbaugen</option>
-				<option value="Gnom">Gnome</option>
-				<option value="Goblin">Goblins</option>
-				<option value="Insulaner">Insulaner</option>
-				<option value="Tokka">Tokka</option>
-				<option value="Usneari">Usneari</option>
-		</select> <br> <br>
-		<span>SI </span> <input type="number" id="CEsi" min="10" max="50" style = "width: 48px"> <br> <br>
-		<span>VT </span> <input type="number" id="CEvt" min="10" max="50" style = "width: 48px"> <br> <br>
-		<span>AT </span> <input type="number" id="CEat" min="10" max="50" style = "width: 48px"> <br> <br>
-		<span>GE </span> <input type="number" id="CEge" min="10" max="50" style = "width: 48px"> <br> <br>
-		<span>Religion </span> <select id="CEreligion">
-				<option value="Materistentum">Materistentum</option>
-				<option value="Tritheodie">Tritheodie</option>
-				<option value="Jalbhinava">Jalbhinava</option>
-				<option value="Karthumismus">Karthumismus</option>
-				<option value="audi">Naturreligion</option>
-				<option value="Pantheon">Pantheon (Honigseim)</option>	
-		</select> <br> <br>
-		<span>Stufe </span> <input type="number" id="CEstufe" min="0" max="20" style = "width: 48px"> <br> <br>
-		<textarea id="CEbeschreibung" placeholder="Beschreibung: Aussehen, Alter, etc." ></textarea>
-		<!--Klasse-->
-	</div>
 </section>
 
 <section id="pageCharDownload">
@@ -130,6 +67,7 @@
         }
 	</script>-->
 	<script src="vendor/jquery.min.js"></script>
+	<script src="sites/global.js"></script>
 	<script src="app.js"></script>
 </body>
 </html>
