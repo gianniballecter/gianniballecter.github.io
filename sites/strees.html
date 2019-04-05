@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> <!--disable Zoom, aber Zoom in Browser möglich-->
+	<meta name="description" content="My little Pen and Paper App.">
+	<meta name="keywords" content="web rpg game pnp">
+	<meta name="theme-color" content="#1e46be" />
+	
+	<title>Giannis PnP-App</title>
+	<link rel="manifest" href="../manifest.json">
+	<link href="../styles.css" type="text/css" rel="stylesheet">
+	<link href="skilltrees/invisiblylist.css" rel="stylesheet">
+	<link href="skilltrees/allgemein.css" rel="stylesheet" id="Allgemein"> <!--Hier muss die id mit dem value bei Ansehen/Domänen übereinstimmen-->
+	<link href="skilltrees/kampf.css" rel="stylesheet" id="Kampf">
+</head>
+<body>
+<a href="../index.html"><img src="../images/icon-192.png" alt="Zum Start" id="backbild"></a>
+	
+<section id="skilltreepage">
+	<div align="center" class="centertoframe-div">
+		<h1>Domänen</h1>
+		<button type="button" onclick="javascript:SaveTree()">Speichern</button>
+		<button type="button" onclick="javascript:window.location.reload()">Zurücksetzen</button>
+		<span>Fähigkeitspunkte: </span><span id = "testTxt">Laden...</span>
+	</div>
+
+	<div align="center">
+		<arrowbutton type="button" onclick="javascript:switch_style(false)" class="previous round">&#8249;</arrowbutton>
+		<treename id="skilltreename">(Error)</treename> 
+		<arrowbutton type="button" onclick="javascript:switch_style(true)" class="next round">&#8250;</arrowbutton> 
+	</div>
+	
+	<div data-bind="css: { open: isOpen }" class="page">
+		<div class="talent-tree" onclick="javascript:EPUpdaten()">
+			<!--ko foreach: skills-->
+			<!--ko if: hasDependencies-->
+			<div data-bind="css: { 'can-add-points': canAddPoints, 'has-points': hasPoints, 'has-max-points': hasMaxPoints }, attr: { 'data-skill-id': id }" class="skill">
+				<div data-bind="css: { active: dependenciesFulfilled }" class="skill-dependency"></div>
+			</div>
+			<!--/ko-->
+			<div data-bind="css: { 'can-add-points': canAddPoints, 'has-points': hasPoints, 'has-max-points': hasMaxPoints }, attr: { 'data-skill-id': id }" class="skill">
+				<div class="icon-container">
+					<div class="icon"></div>
+				</div>
+				<div class="frame">
+						<div class="tool-tip">
+							<b data-bind="text: title" class="skill-name"></b>
+							<hr> 
+							<div data-bind="html: description" class="skill-description"></div>
+						</div> 
+						<div class="skill-points"><span data-bind="text: points" class="points"></span>/<span data-bind="	text: maxPoints" class="max-points"></span></div>
+						<div data-bind="click: addPoint, rightClick: removePoint" class="hit-area"></div>
+				</div>
+			</div>
+			<!--/ko-->
+		</div>
+	</div>
+	
+	<input type="text" id="OutputFromApp" data-bind="value: talentSummary"> 
+	
+</section>
+
+	<script src="../vendor/jquery.min.js"></script>
+	<script src="../vendor/knockout.min.js"></script>
+	<script src="../vendor/skilltree.min.js"></script>
+
+
+	<script src="skilltrees/skilltreelist.js"></script>
+	<script src="skilltrees/skilltrees.js"></script>
+	
+</body>
+</html>
