@@ -60,6 +60,18 @@ header{
 }
 */
 
+.column {
+    float: left;
+    width: 50%;
+  }
+  
+  /* Clear floats after the columns 
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+} */
+
 .centertoframe-div
 {
     margin: 0 auto;
@@ -75,6 +87,12 @@ arrowbutton {
     border-radius: 50%;
     font-weight:800;
     font-size:1.3em;  
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
   
 arrowbutton:hover {
@@ -118,6 +136,13 @@ abutton {
     width:17vh;
     font-size:3vh;
 
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
 }
 
 abutton:hover {
@@ -158,4 +183,19 @@ span {
 }
 .card h2 {
     margin-top: 0;
+}
+
+ /* Kampf */
+#spielercontainer{
+    position: fixed;
+    top: 10vh;
+    left: 0.5vw;
+    width: 19vw;
+}
+
+#theCanvas{
+    position: center;
+    width: 60vw;
+    height: 70vh;
+    border:1px solid #000000;
 }
