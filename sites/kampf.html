@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> <!--disable Zoom, aber Zoom in Browser möglich-->
+	<meta name="description" content="My little Pen and Paper App.">
+	<meta name="keywords" content="web rpg game pnp">
+	<meta name="theme-color" content="#1e46be" />
+	
+	<title>Giannis PnP-App</title>
+	<link rel="manifest" href="../manifest.json">
+	<link href="../styles.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<a href="../index.html"><img src="../images/icon-192.png" alt="Zum Start" id="backbild"></a>
+	
+<section id="pageErstellen">
+	<div id="spielercontainer"> </div>
+	<div align="center">
+		
+		<h1>Kampf</h1>
+		<canvas id="theCanvas">	</canvas> 
+		<abutton id="onlybuttonhere" onclick="javascript:kampfStarten()">Starten</abutton> <br> 
+	</div>
+</section>
+	<script src="../vendor/jquery.min.js"></script>
+	<script src="global.js"></script>
+	<script src="kampf.js"></script>
+</body>
+</html>
