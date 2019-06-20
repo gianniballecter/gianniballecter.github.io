@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> <!--disable Zoom, aber Zoom in Browser möglich-->
+	<meta name="description" content="My little Pen and Paper App.">
+	<meta name="keywords" content="web rpg game pnp">
+	<meta name="theme-color" content="#1e46be" />
+	
+	<title>Giannis PnP-App</title>
+	<link rel="manifest" href="../manifest.json">
+	<link href="../styles.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<a href="../index.html"  id="backpfeil"><p>&#8249; Menü</p></a>
+<a href="../index.html"  id="bigbackpfeil"><p>&#8249; Menü</p></a>
+
+<section id="hauptmenu">
+	<div align="center">
+		<canvas id="playerCanvas">	</canvas> 
+	</div>
+</section>
+	<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+	<script>
+  		// Initialize Firebase
+  		var config = {
+    		apiKey: "AIzaSyCgrJCcbgWL_0EP37MVL5Fzcjws4nlAjVQ",
+    		authDomain: "pandp-7f9c5.firebaseapp.com",
+    		databaseURL: "https://pandp-7f9c5.firebaseio.com",
+    		projectId: "pandp-7f9c5",
+    		storageBucket: "pandp-7f9c5.appspot.com",
+    		messagingSenderId: "255796885743"
+  		};
+ 	 	firebase.initializeApp(config);
+	</script>
+	<script src="../vendor/jquery.min.js"></script>
+	<script src="global.js"></script>
+	<script src="fight.js"></script>
+</body>
+</html>
