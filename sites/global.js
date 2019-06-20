@@ -1,9 +1,10 @@
 const leerChar = {
   id: 1, 
   name: "Beispielcharakter", 
+  initialen: "Bsp",
   volk: "Darnländer", 
   rohattribute: [ 
-    ZA = 10, //3 bis // 0 bis 7
+    ZA = 11, //3 bis // 0 bis 7
     SI = 10,
     GE = 10,
     KR = 10,
@@ -15,6 +16,7 @@ const leerChar = {
   attribute: [ZA = 50, SI = 50, GE = 50, KR = 50, WI = 50, AG = 50, LE = 50, CH = 50],
   religion: "Materistentum",
   stufe: 1,
+
   dpAusgegeben: 0,
   dpInsgesamt: 2,
   ep: 6,
@@ -24,9 +26,17 @@ const leerChar = {
   skilllist: "",
   luck: 50,
   angriff: 50,
-  inventar: []
+  inventar: [],
+
+  lp: 3,
+  vert: 3,
+  attack: 3,
+  energie: 3,
+  menKraft: 3,
+  tempo: 3
 }
 
+/*
 const kChar = {
   id: 1, 
   name: "Beispielcharakter", 
@@ -40,7 +50,7 @@ const kChar = {
   //angriff: 50,
   initiative: 50,
   inventar: []
-}
+}*/
 
 /*****************************************************FUNKTIONEN*****************************************************/
 /*****************************************************FUNKTIONEN*****************************************************/
@@ -64,6 +74,10 @@ function CharakterHinzu(addthischar){
           i++;
         }
         storage.put(addthischar); //put oder add ist wohl egal weil er ne neue ID wählt
+        storage.get(0).onsuccess = function(event) {
+          this.result.chosenOne = addthischar.id;
+          storage.put(this.result);
+        };  
       }
     };
 
@@ -92,4 +106,32 @@ function randn_bm() {
   while(u === 0) u = Math.random(); //Converting [0,1) to (0,1)
   while(v === 0) v = Math.random();
   return Math.sqrt( -2.0 * Math.log( u ) ) * Math.cos( 2.0 * Math.PI * v );
+}
+
+function getUrlVars() {
+  var vars = {};
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+      vars[key] = value;
+  });
+  return vars;
+}
+
+function navigiere(ziel) {
+  var storage = database.transaction("data", "readwrite").objectStore("data"); //use  data 
+    storage.get(0).addEventListener("success", function(event) {
+      if (ziel == 0){
+        window.location.href = '../index.html';
+      } else if (ziel == 1){
+        window.location.href = 'inventar.html?char=' + this.result.chosenOne;
+      } else if (ziel == 2){
+        window.location.href = 'probe.html?char=' + this.result.chosenOne;
+      } else if (ziel == 3){
+        window.location.href = 'strees.html';
+      } else if (ziel == 4){
+        window.location.href = 'ansehen.html?char=' + this.result.chosenOne;
+      } 
+  }); 
+
+  
+
 }
