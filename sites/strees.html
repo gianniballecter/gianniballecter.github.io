@@ -16,19 +16,25 @@
 	<link href="skilltrees/kampf.css" rel="stylesheet" id="Kampf">
 </head>
 <body>
-<a href="../index.html"><img src="../images/icon-192.png" alt="Zum Start" id="backbild"></a>
-	
-<section id="skilltreepage">
+<a href="../index.html"  id="bigbackpfeil2"><p>&#8249; Menü</p></a>
+<div id="leiste2">
+	<p onclick="javascript:navigiere(0)" class="leistenelement">Hauptmenü</p> <br>
+	<p onclick="javascript:navigiere(3)" class="leistenelement">Domänen </p> <br>
+	<p onclick="javascript:navigiere(1)" class="leistenelement">Inventar</p>  <br>
+	<p onclick="javascript:navigiere(4)" class="leistenelement">Ansehen </p> <br>
+	<p onclick="javascript:navigiere(2)" class="leistenelement">Probe </p> <br>
+</div>	
+
+<section id="hauptmenu">
 	<div align="center" class="centertoframe-div">
-		<h1>Domänen</h1>
-		<button type="button" onclick="javascript:SaveTree()">Speichern</button>
+		<button style = "margin-top: 3.5em;" type="button" onclick="javascript:SaveTree()">Speichern</button>
 		<button type="button" onclick="javascript:window.location.reload()">Zurücksetzen</button>
-		<span>Fähigkeitspunkte: </span><span id = "testTxt">Laden...</span>
+		<span class="aussen">Fähigkeitspunkte: </span><span class="aussen" id = "testTxt">Laden...</span>
 	</div>
 
-	<div align="center">
+	<div align="center" class="centertoframe-div">
 		<arrowbutton type="button" onclick="javascript:switch_style(false)" class="previous round">&#8249;</arrowbutton>
-		<treename id="skilltreename">(Error)</treename> 
+		<treename class="aussen" id="skilltreename">(Error)</treename> 
 		<arrowbutton type="button" onclick="javascript:switch_style(true)" class="next round">&#8250;</arrowbutton> 
 	</div>
 	
@@ -66,7 +72,7 @@
 	<script src="../vendor/knockout.min.js"></script>
 	<script src="../vendor/skilltree.min.js"></script>
 
-
+	<script src="global.js"></script>
 	<script src="skilltrees/skilltreelist.js"></script>
 	<script src="skilltrees/skilltrees.js"></script>
 	
