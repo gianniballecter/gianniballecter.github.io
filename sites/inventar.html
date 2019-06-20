@@ -21,17 +21,23 @@
 	</style>
 </head>
 <body>
-<a href="../index.html"><img src="../images/icon-192.png" alt="Zum Start" id="backbild"></a>
-	
-<section id="pageErstellen">
+<a href="../index.html"  id="backpfeil"><p>&#8249; Menü</p></a>
+<div id="leiste">
+	<p onclick="javascript:navigiere(0)" class="leistenelement">Hauptmenü</p> <br>
+	<p onclick="javascript:navigiere(3)" class="leistenelement">Domänen </p> <br>
+	<p onclick="javascript:navigiere(1)" class="leistenelement">Inventar</p>  <br>
+	<p onclick="javascript:navigiere(4)" class="leistenelement">Ansehen </p> <br>
+	<p onclick="javascript:navigiere(2)" class="leistenelement">Probe </p> <br>
+</div>	
+
+<section id="hauptmenu">
 	<div align="center">
-		<h1>Inventar</h1>
-		<div class="row">
+		<div style = "margin-top: 2.5em;" class="row">
 			<div class="column" align="right"> 
-				<br> <input type="text" id="gegenstandName" onfocus="this.value=''" value="Gegenstand"/> 
+				<input class="gegnstand" type="text" id="gegenstandName" onfocus="this.value=''" value="Gegenstand"/> 
 			</div>
 			<div class="column" align="left"> 
-				<abutton onclick="javascript:addItem()">anfügen</abutton> 
+				<div style = "display: inline-table;"><abutton onclick="javascript:addItem()">anfügen</abutton> </div>
 			</div>
 		</div> 
 		<br>
@@ -41,7 +47,7 @@
 				<br> 
 			</div>
 			<div class="column" align="center" id="column2"> 
-					<abutton onclick="javascript:addStandard()">Standard</abutton> <br> 
+				<div style = "display: inline-table;"><abutton onclick="javascript:addStandard()">Standard</abutton> </div><br> 
 			</div>
 			<div class="column" align="left" id="column2"> 
 				<!--	<abutton onclick="javascript:probeMachen(3)">Kraft</abutton>  -->
@@ -52,6 +58,7 @@
 	</div>
 </section>
 	<script src="../vendor/jquery.min.js"></script>
+	<script src="global.js"></script>
 	<script src="inventar.js"></script>
 </body>
 </html>
