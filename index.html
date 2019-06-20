@@ -13,35 +13,29 @@
 	<link href="styles.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-<a href="#hauptmenu"><img src="images/icon-192.png" alt="Zum Start" id="backbild"></a>
+
 	
 <section id="hauptmenu">
 	<!--<header>Ueberschrift</header>-->
 	<div align="center">
+		<img src="images/icon-192.png" alt="Zum Start" onclick="javascript:openKampf()" id="backbild">
 
 		<div style = "display: inline-table;"> <img src="images/download.png" alt="Download" onclick="javascript:openDownload()" class="cloudpic"> </div> 
-		<div style = "display: inline-table;"> <h1 style="vertical-align:middle;">&nbsp; Hauptmenü &nbsp; </h1> </div> 
-		<div style = "display: inline-table;"> <img src="images/upload.png" alt="Upload" onclick="javascript:uploadThisChar()" class="cloudpic"> </div>  <br><br>
+		<!--<div style = "display: inline-table;"> <h1 style="vertical-align:middle;">&nbsp; Hauptmenü &nbsp; </h1> </div> -->
+		<div style = "display: inline-table; margin-left: 7em; margin-top: 1.3em;"> <img src="images/upload.png" alt="Upload" onclick="javascript:uploadThisChar()" class="cloudpic"> </div>  <br><br>
 
-		<div style = "display: inline-table;"><abutton onclick="javascript:openSkilltrees()">Domänen</abutton></div> 
-		<div style = "display: inline-table;"><abutton onclick="javascript:openAnsehen()">Ansehen</abutton> </div> 
-		<div style = "display: inline-table;"><abutton onclick="javascript:openInventar()">Inventar</abutton> </div><br><br>
+		<div style = "display: inline-table;"><abutton id="btnerst" onclick="javascript:openErstellung()">Erstellen</abutton></div>  <br> <br>
+		<div style = "display: inline-table;"><abutton id="btndom" onclick="javascript:openSkilltrees()">Domänen</abutton></div> 
+		<!-- <div style = "display: inline-table;"><abutton onclick="javascript:openAnsehen()">Ansehen</abutton> </div> -->
+		<div style = "display: inline-table;"><abutton id="btninv" onclick="javascript:openInventar()">Inventar</abutton> </div><br><br>
 
 		<arrowbutton type="button" onclick="javascript:changeChar(false)">&#8249;</arrowbutton>
-		<span id="charnamefeld">Warten...</span> 
+		<span onclick="javascript:openAnsehen()" id="charnamefeld"> Warten... </span> 
 		<arrowbutton type="button" onclick="javascript:changeChar(true)">&#8250;</arrowbutton> <br> <br>
-		<div style = "display: inline-table;"><abutton onclick="javascript:openProbe()">Probe</abutton> </div> 
-		<div style = "display: inline-table;"><abutton onclick="javascript:openKampf()">Kampf</abutton> </div><br><br>
-		<abutton onclick="javascript:openErstellung()">Erstellen</abutton> <br>
+		<div style = "display: inline-table;"><abutton id="btnprobe" onclick="javascript:openProbe()">Probe</abutton> </div> 
+		<!-- <div style = "display: inline-table;"><abutton id="btnkampf" onclick="javascript:openKampf()">Kampf</abutton> </div><br><br>-->
+		
     </div>
-</section>
-
-<section id="pageCharDownload">
-	<div align="center">
-		<h1>Onlinespeicher</h1>
-		<abutton onclick="javascript:downloadThisCharToMyLibrary()">Download</abutton> <br>
-		<div id="dlcharcontainer"> </div>
-	</div>
 </section>
 
 <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
