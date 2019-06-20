@@ -1,5 +1,5 @@
-var isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1; //&& ua.indexOf("mobile");
-if(isAndroid) { document.write('<meta name="viewport" content="width=device-width,height='+window.innerHeight+', initial-scale=1.0">');} //resizing
+//var isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1; //&& ua.indexOf("mobile");
+//if(isAndroid) { document.write('<meta name="viewport" content="width=device-width,height='+window.innerHeight+', initial-scale=1.0">');} //resizing
 
 /*****************************************************INDEXEDDB*****************************************************/
 /*****************************************************INDEXEDDB*****************************************************/
@@ -82,6 +82,7 @@ function CESpeichern(){
 
   addchar.name = document.getElementById("CEname").value;
   addchar.volk = document.getElementById("CEvolk").value;
+  addchar.initialen = document.getElementById("CEnick").value;
 
   addchar.rohattribute[0] = parseInt(document.getElementById("CEza").innerHTML);
   addchar.rohattribute[1] = parseInt(document.getElementById("CEsi").innerHTML);
@@ -90,11 +91,12 @@ function CESpeichern(){
   addchar.rohattribute[4] = parseInt(document.getElementById("CEwi").innerHTML);
   addchar.rohattribute[5] = parseInt(document.getElementById("CEag").innerHTML);
   addchar.rohattribute[6] = parseInt(document.getElementById("CEle").innerHTML);
-  addchar.rohattribute[7] = parseInt(document.getElementById("CEch").innerHTML);
+  //addchar.rohattribute[7] = parseInt(document.getElementById("CEch").innerHTML);
+  addchar.rohattribute[7] = 0;
 
   addchar.religion = document.getElementById("CEreligion").value ;
   addchar.stufe = parseInt(document.getElementById("CEstufe").value);
-  addchar.beschreibung = document.getElementById("CEbeschreibung").value ;
+  addchar.beschreibung = document.getElementById("CEbeschreibung").value;
   
   //Verrechnung zu den Attributen 
   var i;
