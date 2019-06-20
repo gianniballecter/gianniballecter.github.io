@@ -11,6 +11,11 @@ var charLegal = true; //Ist der Char speicherbar
 //var isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1; //&& ua.indexOf("mobile");
 //if(isAndroid) { document.write('<meta name="viewport" content="width=device-width,height='+window.innerHeight+', initial-scale=1.0">');} //resizing
 
+//var scrollto = ((1000 - $(window).width()) / 2);
+//document.getElementById("hauptmenu").animate({ scrollLeft:  scrollto}); //richtig scrollen
+
+$('#hauptmenu').animate({ scrollLeft: ((1000 - $(window).width()) / 2) },  0);
+
 /*****************************************************INDEXEDDB*****************************************************/
 /*****************************************************INDEXEDDB*****************************************************/
 var database, idb_request;
