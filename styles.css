@@ -1,4 +1,4 @@
-*{box-sizing:border-box; margin:0; padding:0; font-family:arial;}
+*{box-sizing:border-box; margin:0; padding:0; font-family:Georgia;}
  
 html {
     height:100%;
@@ -6,12 +6,19 @@ html {
     overflow-x: hidden;
 }
 
+
 body{
     margin: 0; 
-    height:100%;
+   height:100%;
+    color: #333333;
+    text-shadow: 1px 1px 4px whitesmoke;
+    font-weight: bold;
+    /*
     background-color: #CFD8DC;
     color: #eee;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-weight: bolder;
+    -webkit-text-stroke: 0.8px black;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;*/
     overflow: hidden;
 }
 
@@ -24,133 +31,40 @@ section{
  
 #backbild{
     position: fixed;
+    margin-left: -2.75em;
     top: 0;
-    left: 0;
-    height: 8vh;
-    width: 8vh;
+    left: 50%;
+    height: 5.5em;
+    width: 5.5em;
 }
 
-#hauptmenu{
-    background:rgb(175, 94, 13);
-}
-#pageCharDownload{
-    background:rgb(194, 184, 54);
-}
-#skilltreepage{
-    background:rgb(98, 150, 20);
-}
-#pageErstellen{
-    background:rgb(54, 172, 121);
-}
-#pageAnsehen{
-    background:rgb(81, 171, 240);
-}
- 
-/*
-header{
-    background-color: #00897B;
-    color: whitesmoke;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    font-size: 22px;
-    padding: 30px 40px;
-    font-weight: bold;
-}
-*/
-
-.column {
-    float: left;
-    width: 50%;
-  }
-  
-  /* Clear floats after the columns 
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-} */
-
-.centertoframe-div
-{
-    margin: 0 auto;
-    width: 1000px;
+@media all and (max-width: 500px)  {
+    #hauptmenu{
+        background: url(images/dnd-background2.jpg) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;  
+    }
 }
 
-arrowbutton {
-    text-decoration: none;
-    display: inline-block;
-    padding: 8px 16px;
-    background-color: #1e46be;
-    color: white;
-    border-radius: 50%;
-    font-weight:800;
-    font-size:1.3em;  
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  
-arrowbutton:hover {
-    background-color: black;
-    color: white;
-    cursor: grab;
-}
-
-#charnamefeld{
-    margin: 0;
-    display: inline-block;
-    background-color: #1e46be;
-    color: white;
+@media all and (min-width: 501px) {
+    #hauptmenu{
+        background: url(images/dnd-background1.jpg) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;  
+    }
 }
 
 h1{
-    color:#fff; 
+    color:#333333; 
     text-align:center;
     margin-top:25px;
     margin-bottom:10px;
 }
     
-abutton {
-    align-content:center;
-    border-color:#c3daed;
-    border-radius:8px;
-    border-style:solid;
-    border-width:2px;
-    cursor:pointer;
-    display:grid;
-    
-    font-weight:800;
-    justify-content:center;
-    user-select:none;
-    background-color:#1e46be; 
-
-    /*height:64px;
-    width:128px; 
-    font-size:1.5em;*/
-    height: 7vh;
-    width:17vh;
-    font-size:3vh;
-
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-
-}
-
-abutton:hover {
-    background-color: black;
-    color: white;
-    cursor: pointer;
-}
-   
 
 p {
     font-size:1.1em;
@@ -163,9 +77,241 @@ span {
     font-size:1.1em;  
 }
 
+@media all and (max-width: 800px)  {
+
+    #backpfeil{
+        position: fixed;
+        top: 0.4em;
+        left: 0.5em;
+        font-size:1.1em;
+        color: #333333;
+        background-color: whitesmoke;
+    }
+
+    #leiste{
+        display: none;
+    }
+
+    .columnp {
+        float: left;
+      }
+
+      #bigbackpfeil{
+        display: none;
+    }
+}
+@media all and (min-width: 801px) {
+
+    #backpfeil{
+        display: none;
+    }
+
+    #bigbackpfeil{
+        position: fixed;
+        top: 0.4em;
+        left: 0.5em;
+        font-size:1.3em;
+        color: #333333;
+    }
+
+    #leiste{
+        position: fixed;
+        top: 4em;
+        left: 75%;
+        font-size:1.1em;
+        min-width: 15%;
+      
+    }
+
+    .leistenelement{
+        padding: 20px;
+        color: #333333;
+        text-decoration: underline;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .leistenelement:hover{
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.5);
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+    }
+
+    #probeeinruecken{
+        margin-left: 30%;
+    }
+
+    .columnp {
+        float: left;
+        max-width: 20%;
+      }
+}
+
+/* Das ist für die Domänen*/
+@media all and (max-width: 1800px)  {
+    #leiste2{display: none;}
+    
+    #bigbackpfeil2{
+        position: fixed;
+        top: 0.4em;
+        left: 0.5em;
+        font-size:1.2em;
+        color: #333333;
+    }
+}
+@media all and (min-width: 1801px) {
+    #leiste2{
+        position: fixed;
+        top: 4em;
+        left: 75%;
+        font-size:1.1em;
+        min-width: 15%;
+    }
+    #bigbackpfeil2{  display: none;}
+}
+/*
+################Buttons################################################################################
+################Buttons################################################################################
+*/
+
+
+arrowbutton {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    /*background-color: #1e46be;*/
+    color: #333333;
+    border-radius: 50%;
+    font-weight:800;
+    font-size:2em;  
+    border: 2px solid transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+arrowbutton:hover {
+    background-color: #333333;
+    color: whitesmoke;
+    cursor: grab;
+   /* border-radius:8px;*/
+    border-width:2px;
+    border-style:solid;
+    border-color:whitesmoke;
+    text-shadow: 0px 0px 0px whitesmoke;
+}
+
+@media all and (max-width: 400px)  {
+    abutton {
+        align-content:center;
+        cursor:pointer;
+        display:grid;
+    
+        width: auto;
+        height: 1.6em;
+        margin: 0;
+        padding: 0.3em 0.3em;
+        border: 2px solid transparent;
+        color: #333333;
+        font-size:1.4em; 
+        
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        
+    }
+
+    .untersbb{
+        margin-top: 0.3em;
+    }
+
+    .gegnstand{
+        margin-top: 0.8em;
+    }
+
+    #charnamefeld{
+        width: auto;
+        height: 1.6em;
+        margin: 0;
+        padding: 0.3em 0.3em;
+        display: inline-block;
+        border: 2px solid transparent;
+        color: #333333;
+        font-size:1.1em; 
+    
+    }
+}
+
+@media all and (min-width: 401px) {
+    abutton {
+        align-content:center;
+        cursor:pointer;
+        display:grid;
+    
+        width: auto;
+        height: 2.2em;
+        margin: 0;
+        padding: 0.5em 0.7em;
+        border: 2px solid transparent;
+        color: #333333;
+        font-size:1.8em; 
+        
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        
+    }
+
+    .untersbb{
+        margin-top: 0.2em;
+    }
+
+    .gegnstand{
+        margin-top: 1.8em;
+    }
+
+    #charnamefeld{
+        width: auto;
+        height: 2.2em;
+        margin: 0;
+        padding: 0.5em 0.5em;
+        display: inline-block;
+        border: 2px solid transparent;
+        color: #333333;
+        font-size:1.5em; 
+    
+    }
+}
+
+
+abutton:hover {
+    background-color: #333333;
+    color: whitesmoke;
+    cursor: pointer;
+    border-radius:8px;
+    border-width:2px;
+    border-style:solid;
+    border-color:whitesmoke;
+    text-shadow: 0px 0px 0px whitesmoke;
+}
+/*
+################Seiten#################################################################################
+################Seiten#################################################################################
+*/
+
+
 .cloudpic{
-    height: 6vh;
-    width: 6vh;
+    height: 4em;
+    width: 4em;
     vertical-align:middle;
 }
 
@@ -173,9 +319,35 @@ span {
     cursor: pointer;
 }
 
+#charnamefeld:hover{
+    margin: 0;
+    display: inline-block;
+    background-color: #333333;
+    color: whitesmoke;
+    border-radius:8px;
+    border-width:2px;
+    border-style:solid;
+    border-color:whitesmoke;
+    cursor: pointer;
+    text-shadow: 0px 0px 0px whitesmoke;
+}
+
+.column {
+    float: left;
+    width: 50%;
+  }
+  
+.centertoframe-div
+{
+    margin: 0 auto;
+    width: 1000px;
+}
+
 .card {
-    background-color: #1e46be;
-    color: #ffffff;
+    max-width: 45%;
+    color: #333333;
+    text-shadow: 2px 2px 6px whitesmoke;
+
     padding: 30px;
     margin: 20px;
     border-radius: 3px;
@@ -185,17 +357,82 @@ span {
     margin-top: 0;
 }
 
- /* Kampf */
-#spielercontainer{
-    position: fixed;
-    top: 10vh;
-    left: 0.5vw;
-    width: 19vw;
-}
 
-#theCanvas{
+
+
+ /*
+################Kampf#################################################################################
+################Kampf#################################################################################
+*/
+#playerCanvas{
     position: center;
-    width: 60vw;
-    height: 70vh;
+    margin-top: 4em;
+    width: 85%;
+    height: 80vh;
     border:1px solid #000000;
 }
+
+
+/* Kampf*/
+ @media all and (max-width: 1198px)  {
+    #spielercontainer{
+        display: none;
+    }
+
+    #theCanvas{
+        display: none;
+    }
+    
+    .enclose {
+        display: none;
+    }
+
+    #ScrennInfo {
+        margin-top: 5em;
+    }
+}
+@media all and (min-width: 1199px) {
+    #spielercontainer{
+        position: fixed;
+        top: 7em;
+        left: 0.5vw;
+        width: 20%;
+    }
+    
+    .card2 {
+        color: whitesmoke;
+        background-color: #1e46be;
+        text-shadow: 0px 0px 0px whitesmoke;
+        padding: 30px;
+        margin: 20px;
+        border-radius: 3px;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+    }
+    
+    #theCanvas{
+        position: center;
+        margin-top: 2em;
+        margin-left: 19%;
+         /*width: 60vw;
+        height: 70vh;*/
+        width: 75%;
+        height: 80vh;
+        border:1px solid #000000;
+    }
+    
+    .enclose {
+        position:fixed center;
+        top: 2%;
+        width:20%;
+        text-shadow: 1px 1px 4px whitesmoke;
+        color: #333333;
+        /*
+        bottom:0px;
+        */
+    }
+
+    #ScrennInfo {
+        display: none;
+    }
+}
+
