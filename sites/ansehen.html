@@ -13,11 +13,18 @@
 	<link href="../styles.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-<a href="../index.html"><img src="../images/icon-192.png" alt="Zum Start" id="backbild"></a>
-	
-<section id="pageAnsehen">
+<a href="../index.html"  id="backpfeil"><p>&#8249; Menü</p></a>	
+<div id="leiste">
+	<p onclick="javascript:navigiere(0)" class="leistenelement">Hauptmenü</p> <br>
+	<p onclick="javascript:navigiere(3)" class="leistenelement">Domänen </p> <br>
+	<p onclick="javascript:navigiere(1)" class="leistenelement">Inventar</p>  <br>
+	<p onclick="javascript:navigiere(4)" class="leistenelement">Ansehen </p> <br>
+	<p onclick="javascript:navigiere(2)" class="leistenelement">Probe </p> <br>
+</div>	
+
+<section id="hauptmenu">
 	<div align="center">
-		<h1 id="charnamefeld2">Charaktername</h1>
+		<h1 style = "margin-top: 1.8em;" id="charnamefeld2">Charaktername</h1>
 
 		<p id="charzusammenfassung"></p> <br><br>
 
