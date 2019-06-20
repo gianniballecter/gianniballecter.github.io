@@ -13,17 +13,30 @@
 	<link href="../styles.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-<a href="../index.html"><img src="../images/icon-192.png" alt="Zum Start" id="backbild"></a>
-	
-<section id="pageErstellen">
+<a href="../index.html"  id="backpfeil"><p>&#8249; Menü</p></a>
+<a href="../index.html"  id="bigbackpfeil"><p>&#8249; Menü</p></a>
+
+<section id="hauptmenu">
 	<div id="spielercontainer"> </div>
 	<div align="center">
-		
-		<h1>Kampf</h1>
+		<abutton class="enclose" id="onlybuttonhere" onclick="javascript:kampfStarten()">Starten</abutton> 
 		<canvas id="theCanvas">	</canvas> 
-		<abutton id="onlybuttonhere" onclick="javascript:kampfStarten()">Starten</abutton> <br> 
+		<p id="ScrennInfo">Die benötigte Bildschrimbreite wurde nicht festgestellt.</p> 
 	</div>
 </section>
+	<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+	<script>
+  		// Initialize Firebase
+  		var config = {
+    		apiKey: "AIzaSyCgrJCcbgWL_0EP37MVL5Fzcjws4nlAjVQ",
+    		authDomain: "pandp-7f9c5.firebaseapp.com",
+    		databaseURL: "https://pandp-7f9c5.firebaseio.com",
+    		projectId: "pandp-7f9c5",
+    		storageBucket: "pandp-7f9c5.appspot.com",
+    		messagingSenderId: "255796885743"
+  		};
+ 	 	firebase.initializeApp(config);
+	</script>
 	<script src="../vendor/jquery.min.js"></script>
 	<script src="global.js"></script>
 	<script src="kampf.js"></script>
