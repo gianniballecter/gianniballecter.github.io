@@ -1,10 +1,3 @@
-function getUrlVars() {
-    var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        vars[key] = value;
-    });
-    return vars;
-}
 var chosenChar = parseInt(getUrlVars()["char"]);
 
 //var isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1; //&& ua.indexOf("mobile");
@@ -44,7 +37,9 @@ function probeMachen(wert){
 
             Standardabweichung = 20;
           
+            document.getElementById("probenfeld").style.fontFamily = 'verdana';
             document.getElementById("probenfeld").innerHTML = Math.round((Mittelwert + randn_bm()*Standardabweichung)*100)/100;
+            
         }
       }
 }
