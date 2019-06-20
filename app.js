@@ -5,8 +5,10 @@ const kekse = { //cookielike strukture
   chosenOne: 1
 }
 
-var isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1; //&& ua.indexOf("mobile");
-if(isAndroid) { document.write('<meta name="viewport" content="width=device-width,height='+window.innerHeight+', initial-scale=1.0">');} //resizing
+modus = 0; //Kampfmodus
+
+//var isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1; //&& ua.indexOf("mobile");
+//if(isAndroid) { document.write('<meta name="viewport" content="width=device-width,height='+window.innerHeight+', initial-scale=1.0">');} //resizing
 
 /*****************************************************INDEXEDDB*****************************************************/
 /*****************************************************INDEXEDDB*****************************************************/
@@ -54,42 +56,7 @@ function uploadThisChar(){
 }
 
 function openDownload(){
-  return firebase.database().ref().child("Chars").once('value').then(function(snapshot) {
-    //var userData = snapshot.val(); //console.log(userData.Text.Name);
-  
-    dataf = Object.keys(snapshot.val());
-    let html = "";
-    dataf.forEach(function(element) {
-      html += `<div class="card" onclick="javascript:chooseThisCharacterToDownload(this)">
-      <h2>${element}</h2>
-      </div>
-      `;
-    });
-
-    document.getElementById("dlcharcontainer").innerHTML = html;
-    window.location.hash = 'pageCharDownload';
-  });  
-}
-
-var chosenToDownload = "Beispielcharakter";
-
-function chooseThisCharacterToDownload(element){
-  var x = document.getElementsByClassName("card"); var i;
-  for (i = 0; i < x.length; i++) {x[i].style.backgroundColor = "#1e46be";} //andere Hintergründe blau
-  chosenToDownload = $(element).text();
-  $(element).css('background-color', '#000000');
-  chosenToDownload = chosenToDownload.trim(); //unnötige Leerzeichen entfernen
-  //chosenToDownload = chosenToDownload.replace(/\s+/g, ''); //unnötige Leerzeichen entfernen
- 
-}
-
-function downloadThisCharToMyLibrary(){
-  return firebase.database().ref().child("Chars").child(chosenToDownload).once('value').then(function(snapshot) {
-    CharakterHinzu(snapshot.val());
-    chosenToDownload = "Beispielcharakter"; //Alles auf Anfang
-    var x = document.getElementsByClassName("card"); var i;
-    for (i = 0; i < x.length; i++) {x[i].style.backgroundColor = "#1e46be";} //andere Hintergründe blau
-  });   
+  window.location.href = 'sites/download.html';
 }
 
 /*****************************************************PFEILE*****************************************************/
@@ -138,21 +105,76 @@ function openAnsehen(){
 }
 
 function openErstellung(){
-  window.location.href = 'sites/erstellung.html';
+  if (modus == 0){
+    window.location.href = 'sites/erstellung.html';
+  } else if (modus == 1){
+    window.location.href = 'sites/kampf.html';
+  }
 }
 
 function openSkilltrees() {
-  window.location.href = 'sites/strees.html';
+  if (modus == 0){
+    window.location.href = 'sites/strees.html';
+  } else if (modus == 1) {
+    window.location.href = 'sites/fight.html?char=' + chosenChar + "&team=1";
+  }
 }
 
 function openProbe(){
-  window.location.href = 'sites/probe.html?char=' + chosenChar;
+  if (modus == 0){
+    window.location.href = 'sites/probe.html?char=' + chosenChar;
+  } else if (modus == 1){
+    $('#backbild').animateRotate(225, 0, 500, 'swing', function () {
+      document.getElementById("btnerst").innerText = "Erstellung";
+      document.getElementById("btndom").innerText = "Domänen";
+      document.getElementById("btninv").innerText = "Inventar";
+      document.getElementById("btnprobe").innerText = "Probe"; 
+      modus = 0;
+    });   
+  }
 }
 
 function openInventar(){
-  window.location.href = 'sites/inventar.html?char=' + chosenChar;
+  if (modus == 0){
+    window.location.href = 'sites/inventar.html?char=' + chosenChar;
+  } else if (modus == 1) {
+    window.location.href = 'sites/fight.html?char=' + chosenChar + "&team=2";
+  }
 }
 
 function openKampf(){
-  window.location.href = 'sites/kampf.html';
+  if (modus == 0){
+    $('#backbild').animateRotate(0, 225, 500, 'swing', function () {
+      document.getElementById("btnerst").innerText = "SL";
+      document.getElementById("btndom").innerText = "SC";
+      document.getElementById("btninv").innerText = "NSC";
+      document.getElementById("btnprobe").innerText = "Zurück";
+      modus = 1;
+        });   
+    
+  } else if (modus == 1){
+    $('#backbild').animateRotate(225, 0, 500, 'swing', function () {
+      document.getElementById("btnerst").innerText = "Erstellung";
+      document.getElementById("btndom").innerText = "Domänen";
+      document.getElementById("btninv").innerText = "Inventar";
+      document.getElementById("btnprobe").innerText = "Probe"; 
+      modus = 0;
+    });   
+    
+  }
 }
+
+//Some jquery from internet
+$.fn.animateRotate = function(start, angle, duration, easing, complete) {
+  var args = $.speed(duration, easing, complete);
+  var step = args.step;
+  return this.each(function(i, e) {
+    args.complete = $.proxy(args.complete, e);
+    args.step = function(now) {
+      $.style(e, 'transform', 'rotate(' + now + 'deg)');
+      if (step) return step.apply(e, arguments);
+    };
+
+    $({deg: start}).animate({deg: angle}, args);
+  });
+};
