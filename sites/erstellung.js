@@ -15,8 +15,8 @@ idb_request.addEventListener("success", function(event) {
 /*****************************************************ERSTELLUNG*****************************************************/
 /*****************************************************ERSTELLUNG*****************************************************/
 function changeWert(wert, boolpositiv){
-  var minWert = 3;
-  var maxWert = 25;
+  var minWert = 2;
+  var maxWert = 8;
   var akWert = 0;
   var neuWert = 0;
   var punkte = parseInt(document.getElementById("CEuPunkte").innerHTML);
@@ -55,16 +55,7 @@ function changeWert(wert, boolpositiv){
   
 
   //Den +5er
-  if (wert == 100 && punkte >= 21) {
-    document.getElementById("CEza").innerHTML = parseInt(document.getElementById("CEza").innerHTML) + 3;
-    document.getElementById("CEsi").innerHTML = parseInt(document.getElementById("CEsi").innerHTML) + 3;
-    document.getElementById("CEge").innerHTML = parseInt(document.getElementById("CEge").innerHTML) + 3;
-    document.getElementById("CEkr").innerHTML = parseInt(document.getElementById("CEkr").innerHTML) + 3;
-    document.getElementById("CEwi").innerHTML = parseInt(document.getElementById("CEwi").innerHTML) + 3;
-    document.getElementById("CEag").innerHTML = parseInt(document.getElementById("CEag").innerHTML) + 3;
-    document.getElementById("CEle").innerHTML = parseInt(document.getElementById("CEle").innerHTML) + 3;
-    document.getElementById("CEuPunkte").innerHTML = punkte - 21;
-  } else if (wert == 100 && punkte >= 7) {
+  if (wert == 100 && punkte >= 7) {
     document.getElementById("CEza").innerHTML = parseInt(document.getElementById("CEza").innerHTML) + 1;
     document.getElementById("CEsi").innerHTML = parseInt(document.getElementById("CEsi").innerHTML) + 1;
     document.getElementById("CEge").innerHTML = parseInt(document.getElementById("CEge").innerHTML) + 1;
@@ -73,7 +64,53 @@ function changeWert(wert, boolpositiv){
     document.getElementById("CEag").innerHTML = parseInt(document.getElementById("CEag").innerHTML) + 1;
     document.getElementById("CEle").innerHTML = parseInt(document.getElementById("CEle").innerHTML) + 1;
     document.getElementById("CEuPunkte").innerHTML = punkte - 7;
+  } else if (wert == 100 && punkte >= 1) {
+    for (i = 0; i < punkte; i++){
+      if (parseInt(document.getElementById("CEza").innerHTML) < 8){
+        document.getElementById("CEza").innerHTML = parseInt(document.getElementById("CEza").innerHTML) + 1;
+        punkte -= 1;
+        if (punkte < 1) {break;}
+      } 
+      if (parseInt(document.getElementById("CEsi").innerHTML) < 8){
+        document.getElementById("CEsi").innerHTML = parseInt(document.getElementById("CEsi").innerHTML) + 1;
+        punkte -= 1;
+        if (punkte < 1) {break;}
+      }
+      if (parseInt(document.getElementById("CEge").innerHTML) < 8){
+        document.getElementById("CEge").innerHTML = parseInt(document.getElementById("CEge").innerHTML) + 1;
+        punkte -= 1;
+        if (punkte < 1) {break;}
+      }  
+      if (parseInt(document.getElementById("CEkr").innerHTML) < 8){
+        document.getElementById("CEkr").innerHTML = parseInt(document.getElementById("CEkr").innerHTML) + 1;
+        punkte -= 1;
+        if (punkte < 1) {break;}
+      }  
+      if (parseInt(document.getElementById("CEwi").innerHTML) < 8){
+        document.getElementById("CEwi").innerHTML = parseInt(document.getElementById("CEwi").innerHTML) + 1;
+        punkte -= 1;
+        if (punkte < 1) {break;}
+      }  
+      if (parseInt(document.getElementById("CEag").innerHTML) < 8){
+        document.getElementById("CEag").innerHTML = parseInt(document.getElementById("CEag").innerHTML) + 1;
+        punkte -= 1;
+        if (punkte < 1) {break;}
+      }  
+      if (parseInt(document.getElementById("CEle").innerHTML) < 8){
+        document.getElementById("CEle").innerHTML = parseInt(document.getElementById("CEle").innerHTML) + 1;
+        punkte -= 1;
+        if (punkte < 1) {break;}
+      }
+    }
+    document.getElementById("CEuPunkte").innerHTML = punkte;
+    
   }
+
+}
+
+function CETrySpeichern(){
+  //Hier fehlende Felder Abfangen
+  CESpeichern();
 }
 
 function CESpeichern(){
@@ -91,7 +128,6 @@ function CESpeichern(){
   addchar.rohattribute[4] = parseInt(document.getElementById("CEwi").innerHTML);
   addchar.rohattribute[5] = parseInt(document.getElementById("CEag").innerHTML);
   addchar.rohattribute[6] = parseInt(document.getElementById("CEle").innerHTML);
-  //addchar.rohattribute[7] = parseInt(document.getElementById("CEch").innerHTML);
   addchar.rohattribute[7] = 0;
 
   addchar.religion = document.getElementById("CEreligion").value ;
@@ -99,44 +135,45 @@ function CESpeichern(){
   addchar.beschreibung = document.getElementById("CEbeschreibung").value;
   
   //Verrechnung zu den Attributen 
-  var i;
-  var zwischenwert;
   for (i = 0; i < 7; i++) {
-    zwischenwert = addchar.rohattribute[i] - 10;
-    zwischenwert = 210*Math.sqrt(Math.PI)*erf(zwischenwert+(3/5)) + 12*zwischenwert*Math.abs(zwischenwert) + 12*Math.pow(zwischenwert, 2)-840*zwischenwert;
-    addchar.attribute[i] = (-zwischenwert/175) + 51.5;
+    if (addchar.rohattribute[i] == 0){
+      addchar.attribute[i] = 12.5;
+    } else if (addchar.rohattribute[i] == 1){
+      addchar.attribute[i] = 22.5;
+    } else if (addchar.rohattribute[i] == 2){
+      addchar.attribute[i] = 32.5;
+    } else if (addchar.rohattribute[i] == 3){
+      addchar.attribute[i] = 42.5;
+    } else if (addchar.rohattribute[i] == 4){
+      addchar.attribute[i] = 52.5;
+    } else if (addchar.rohattribute[i] == 5){
+      addchar.attribute[i] = 60;
+    } else if (addchar.rohattribute[i] == 6){
+      addchar.attribute[i] = 70;
+    } else if (addchar.rohattribute[i] == 7){
+      addchar.attribute[i] = 77.5;
+    } else if (addchar.rohattribute[i] == 8){
+      addchar.attribute[i] = 85;
+    } else if (addchar.rohattribute[i] == 9){
+      addchar.attribute[i] = 92.5;
+    } else if (addchar.rohattribute[i] == 10){
+      addchar.attribute[i] = 97.5;
+    } 
   } 
-  
+
   addchar.dpInsgesamt = dpInsgesamtBerechnen(addchar); //Müsste hier in Abhängikeit von Lehre eigentlich
   addchar.dpAusgegeben = 0;
   addchar.epInsgesamt = 5 + Math.pow(addchar.stufe, 2);
   addchar.ep = addchar.epInsgesamt;
+
+  addchar.waffen.push(weapon[0]);
+  for (i = 0; i < addchar.waffen[0].standardmoves.length; i++) {
+    addchar.waffen[0].wmoves.push(wmove[addchar.waffen[0].standardmoves[i]]);
+  }
+  
 
   CharakterHinzu(addchar);
   alert(addchar.name + " hinzugefügt!");
 }
 
 /*****************************************************HILFE*****************************************************/
-//Gaußsche Fehlerfunktion
-function erf(x) {
-  var z;
-  const ERF_A = 0.147; 
-  var the_sign_of_x;
-  if(0==x) {
-      the_sign_of_x = 0;
-      return 0;
-  } else if(x>0){
-      the_sign_of_x = 1;
-  } else {
-      the_sign_of_x = -1;
-  }
-
-  var one_plus_axsqrd = 1 + ERF_A * x * x;
-  var four_ovr_pi_etc = 4/Math.PI + ERF_A * x * x;
-  var ratio = four_ovr_pi_etc / one_plus_axsqrd;
-  ratio *= x * -x;
-  var expofun = Math.exp(ratio);
-  var radical = Math.sqrt(1-expofun);
-  z = radical * the_sign_of_x;
-  return z;
-}
