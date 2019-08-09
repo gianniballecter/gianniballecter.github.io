@@ -18,8 +18,10 @@ idb_request.addEventListener("success", function(event) {
     var storage = database.transaction("data", "readwrite").objectStore("data"); //use  data 
     storage.get(chosenChar).onsuccess = function(event) {
       document.getElementById("charnamefeld2").innerHTML = this.result.name;
-      ansehenAktualisieren();
 
+      treeWahlenAnpassen();
+      ansehenAktualisieren();
+      
       document.getElementById("charbeschreibungdisplay").innerHTML = this.result.beschreibung; //Muss nicht nach unten, weil unveränderlich
     };
  });
@@ -47,6 +49,7 @@ function AddThisTree(baum){
       } else {
         this.result.skilltreelist = this.result.skilltreelist + ", " + baumname;
         this.result.dpAusgegeben += 1;
+        if (baumname == "Karthumismus") {this.result.dpAusgegeben += 1;} //Zweiter DP
         storage.put(this.result);
         ansehenAktualisieren();
       }
@@ -109,7 +112,7 @@ function charLoeschen(){
 
 
 //##################################### Hilfsfähigkeit ##############################
-function ansehenAktualisieren(){
+function ansehenAktualisieren(){ 
   if (database) { 
     var storage = database.transaction("data", "readwrite").objectStore("data"); 
     storage.get(chosenChar).onsuccess = function(event) {
@@ -119,13 +122,35 @@ function ansehenAktualisieren(){
       "Fähigkeitspunkte übrig: " + this.result.ep + "/" + this.result.epInsgesamt;
 
       document.getElementById("domainField").innerHTML = "Domänenpunkte: " + (this.result.dpInsgesamt - this.result.dpAusgegeben) + "/" + this.result.dpInsgesamt;
-
-      //Die Selectboxen editieren
-      var opt1 = document.createElement('option');
-      opt1.appendChild( document.createTextNode('Legende') );
-      opt1.value = 'Legende'; 
-      if (this.result.stufe > 9) {document.getElementById('CEdomaene2').appendChild(opt1);}
-      
     }
   }
+}
+
+function treeWahlenAnpassen(){ //Die wählbaren Domänen so anpassen, dass man alle Trees hat
+  if (database) { 
+    var storage = database.transaction("data", "readwrite").objectStore("data"); 
+    storage.get(chosenChar).onsuccess = function(event) {
+      
+      //Die Selectboxen editieren
+      if (this.result.stufe > 9) {document.getElementById('CEdomaene1').appendChild(neueOption('Legende'));}
+      
+      // Religion
+      if (this.result.religion == "Materistentum") {document.getElementById('CEdomaene1').appendChild(neueOption('Matera'));}
+      if (this.result.religion == "Tritheodie") {document.getElementById('CEdomaene1').appendChild(neueOption('Tritheodie'));}
+      if (this.result.religion == "Jalbhinava") {document.getElementById('CEdomaene1').appendChild(neueOption('Jalbhinava'));}
+      if (this.result.religion == "Pantheon") {document.getElementById('CEdomaene1').appendChild(neueOption('Kriegerpriester'));}
+
+      var optk = document.createElement('option');
+      optk.appendChild( document.createTextNode("Neokarthumismus (2 DP)"));
+      optk.value = "Neokarthumismus"; 
+      if (this.result.religion == "Karthumismus") {document.getElementById('CEdomaene1').appendChild(optk);}
+    }
+  }
+}
+
+function neueOption(inhaltname){
+  var optneu = document.createElement('option');
+  optneu.appendChild( document.createTextNode(inhaltname));
+  optneu.value = inhaltname; 
+  return optneu;
 }
