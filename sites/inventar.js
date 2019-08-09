@@ -18,10 +18,19 @@ idb_request.addEventListener("success", function(event) {
 /*****************************************************ERSTELLUNG*****************************************************/
 /*****************************************************ERSTELLUNG*****************************************************/
 function addItem(){
+    var inputstringi = document.getElementById("gegenstandName").value;
     if (database) { 
         var storage = database.transaction("data", "readwrite").objectStore("data"); 
         storage.get(chosenChar).onsuccess = function(event) {
-            this.result.inventar.push(document.getElementById("gegenstandName").value);
+            if (isNaN(inputstringi)) {
+                this.result.inventar.push(inputstringi);
+            } else if (weapon[inputstringi] != null) {
+                this.result.waffen.push(weapon[inputstringi]);
+                this.result.chosenWaffe = this.result.waffen.length - 1;
+                for (i = 0; i < this.result.waffen[this.result.chosenWaffe].standardmoves.length; i++) {
+                    this.result.waffen[this.result.chosenWaffe].wmoves.push(wmove[this.result.waffen[this.result.chosenWaffe].standardmoves[i]]);
+                }
+            }
             storage.put(this.result);
             inventarAktualisieren();
         }
@@ -45,6 +54,8 @@ function inventarAktualisieren(){
     
         storage.get(chosenChar).onsuccess = function(event) {
             dataf = this.result.inventar;
+            for (i = 0; i < this.result.waffen.length; i++){ dataf.push(this.result.waffen[i].name);} //Auch Waffen
+
             let html = "";
             var i = 0;
             dataf.forEach(function(element) {
