@@ -55,7 +55,7 @@ function skillz_installieren() {
 		  var stringskills = InputFA.split(", ");
 		  var i;
 		  for (i = 0; i < stringskills.length; i++) {
-			  dieserCharakter.skills[stringskills[i] - 1].points = 1; //Ändere die Konstante
+        dieserCharakter.skills[stringskills[i] - 1].points = 1; //Ändere die Konstante
 		  } 
 	  }
 	  (function($, ko, data){
