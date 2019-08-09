@@ -1,4 +1,7 @@
 1. Die Fähigkeiten zum Javascript "skilltreelist.js" hinzufügen.
-2. Den Skilltree zum Javascript "ansehen.js" und auch in "ansehen.html"? hinzufügen.
+
+(2. Den Skilltree zum Javascript "ansehen.js" und auch in "ansehen.html"? hinzufügen.)
+strees.html!
 3. Ein CSS copypasten und anpassen, eventuell Bilder machen
-4. Fähigkeiten umsetzen
+
+(4. Fähigkeiten umsetzen)
