@@ -24,7 +24,7 @@
 
 <section id="hauptmenu">
 	<div align="center">
-		<div style = "display: inline-table;"><abutton class = "untersbb" onclick="javascript:CESpeichern()">Sichern</abutton></div> <br>
+		<div style = "display: inline-table;"><abutton class = "untersbb" onclick="javascript:CETrySpeichern()">Sichern</abutton></div> <br>
 		<input type="text" id="CEname" onfocus="this.value=''" value="Name"/> <br> <br>
 		<input type="text" id="CEnick" onfocus="this.value=''" value="Kürzel" size="3" maxlength="3"/> <br> <br>
 		<span>Volk </span> <select id="CEvolk">
@@ -38,7 +38,7 @@
 				<option value="Usneari">Usneari</option>
 		</select> <br> <br>
 		
-		<span>Übrige Punkte: </span><span style = "font-family: verdana;" id="CEuPunkte">50</span> <arrowbutton type="button" onclick="javascript:changeWert(100, true)">&#8250;&#8250;</arrowbutton>
+		<span>Übrige Punkte: </span><span style = "font-family: verdana;" id="CEuPunkte">20</span> <arrowbutton type="button" onclick="javascript:changeWert(100, true)">&#8250;&#8250;</arrowbutton>
 
 		<div class="row">
 			<div class="column" align="right"> 
@@ -52,13 +52,13 @@
 				<!--<span>Charisma</span> <arrowbutton type="button" onclick="javascript:changeWert(8, false)">&#8249;</arrowbutton> <br> -->
 			</div>
 			<div class="column" align="left"> 
-				<span style = "font-family: verdana;" id="CEza">3</span> <arrowbutton type="button" onclick="javascript:changeWert(1, true)">&#8250;</arrowbutton> <br> 
-				<span style = "font-family: verdana;" id="CEsi">3</span> <arrowbutton type="button" onclick="javascript:changeWert(2, true)">&#8250;</arrowbutton> <br> 
-				<span style = "font-family: verdana;" id="CEge">3</span> <arrowbutton type="button" onclick="javascript:changeWert(3, true)">&#8250;</arrowbutton> <br> 
-				<span style = "font-family: verdana;" id="CEkr">3</span> <arrowbutton type="button" onclick="javascript:changeWert(4, true)">&#8250;</arrowbutton> <br> 
-				<span style = "font-family: verdana;" id="CEwi">3</span> <arrowbutton type="button" onclick="javascript:changeWert(5, true)">&#8250;</arrowbutton> <br> 
-				<span style = "font-family: verdana;" id="CEag">3</span> <arrowbutton type="button" onclick="javascript:changeWert(6, true)">&#8250;</arrowbutton> <br> 
-				<span style = "font-family: verdana;" id="CEle">3</span> <arrowbutton type="button" onclick="javascript:changeWert(7, true)">&#8250;</arrowbutton> <br> 
+				<span style = "font-family: verdana;" id="CEza">2</span> <arrowbutton type="button" onclick="javascript:changeWert(1, true)">&#8250;</arrowbutton> <br> 
+				<span style = "font-family: verdana;" id="CEsi">2</span> <arrowbutton type="button" onclick="javascript:changeWert(2, true)">&#8250;</arrowbutton> <br> 
+				<span style = "font-family: verdana;" id="CEge">2</span> <arrowbutton type="button" onclick="javascript:changeWert(3, true)">&#8250;</arrowbutton> <br> 
+				<span style = "font-family: verdana;" id="CEkr">2</span> <arrowbutton type="button" onclick="javascript:changeWert(4, true)">&#8250;</arrowbutton> <br> 
+				<span style = "font-family: verdana;" id="CEwi">2</span> <arrowbutton type="button" onclick="javascript:changeWert(5, true)">&#8250;</arrowbutton> <br> 
+				<span style = "font-family: verdana;" id="CEag">2</span> <arrowbutton type="button" onclick="javascript:changeWert(6, true)">&#8250;</arrowbutton> <br> 
+				<span style = "font-family: verdana;" id="CEle">2</span> <arrowbutton type="button" onclick="javascript:changeWert(7, true)">&#8250;</arrowbutton> <br> 
 				<!--<span style = "font-family: verdana;" id="CEch">0</span> <arrowbutton type="button" onclick="javascript:changeWert(8, true)">&#8250;</arrowbutton> <br> -->
 				<br>  
 			</div>
@@ -69,7 +69,7 @@
 				<option value="Tritheodie">Tritheodie</option>
 				<option value="Jalbhinava">Jalbhinava</option>
 				<option value="Karthumismus">Karthumismus</option>
-				<option value="audi">Naturreligion</option>
+				<!--<option value="audi">Naturreligion</option>-->
 				<option value="Pantheon">Pantheon (Honigseim)</option>	
 		</select> <br> <br>
 		<span>Stufe </span> <input style = "font-family: verdana;" type="number" id="CEstufe" min="0" max="20" style = "width: 48px" value=1> <br> <br>
@@ -79,6 +79,7 @@
 </section>
 	<script src="../vendor/jquery.min.js"></script>
 	<script src="global.js"></script>
+	<script src="waffen.js"></script>
 	<script src="erstellung.js"></script>
 </body>
 </html>
