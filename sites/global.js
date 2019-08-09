@@ -1,19 +1,20 @@
 const leerChar = {
   id: 1, 
+  uniqueID: 0,
   name: "Beispielcharakter", 
   initialen: "Bsp",
   volk: "Darnländer", 
   rohattribute: [ 
-    ZA = 11, //3 bis // 0 bis 7
-    SI = 10,
-    GE = 10,
-    KR = 10,
-    WI = 10,
-    AG = 10,
-    LE = 10,
+    ZA = 5, 
+    SI = 5,
+    GE = 5,
+    KR = 5,
+    WI = 4,
+    AG = 5,
+    LE = 5,
     CH = 0 //0= ohne // steigt nur in Geraden werten
   ],
-  attribute: [ZA = 50, SI = 50, GE = 50, KR = 50, WI = 50, AG = 50, LE = 50, CH = 50],
+  attribute: [ZA = 60, SI = 60, GE = 60, KR = 60, WI = 52.5, AG = 60, LE = 60, CH = 0],
   religion: "Materistentum",
   stufe: 1,
 
@@ -27,30 +28,17 @@ const leerChar = {
   luck: 50,
   angriff: 50,
   inventar: [],
+  waffen: [],
+  chosenWaffe: 0,
 
-  lp: 3,
+  lp: 5,
+  energie: 5,
+  
   vert: 3,
   attack: 3,
-  energie: 3,
   menKraft: 3,
   tempo: 3
 }
-
-/*
-const kChar = {
-  id: 1, 
-  name: "Beispielcharakter", 
-  volk: "Darnländer", 
-  attribute: [ZA = 50, SI = 50, GE = 50, KR = 50, WI = 50, AG = 50, LE = 50, CH = 50],
-  religion: "Materistentum",
-  stufe: 1,
-  skilltreelist: "Allgemein",
-  skilllist: "",
-  //luck: 50,
-  //angriff: 50,
-  initiative: 50,
-  inventar: []
-}*/
 
 /*****************************************************FUNKTIONEN*****************************************************/
 /*****************************************************FUNKTIONEN*****************************************************/
@@ -60,6 +48,7 @@ function CharakterHinzu(addthischar){
     var i = 1;
     var alleIDs = [];
     addthischar.id = 1;
+    if (addthischar.uniqueID == 0) {addthischar.uniqueID = uuidv4();}
 
     storage.openCursor().onsuccess = function(event) {
       var cursor = event.target.result;
@@ -131,7 +120,11 @@ function navigiere(ziel) {
         window.location.href = 'ansehen.html?char=' + this.result.chosenOne;
       } 
   }); 
+}
 
-  
-
+function uuidv4() { //Einzigartigkeit nicht garantiert, weil Math.Random zweifelhaft ist.
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
 }
