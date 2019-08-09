@@ -1,0 +1,129 @@
+/**************************************************
+	DEPENDENCY ARROWS
+**************************************************/
+[data-skill-id="114"] .skill-dependency{
+  margin-left: -20px;
+  width: 50px;
+  height: 80px;
+  background-position: -0px -220px;
+  margin-bottom: -20px;
+}
+[data-skill-id="115"] .skill-dependency{
+  margin-left: -60px;
+  width: 40px;
+  height: 200px;
+  background-position: -0px -15px;
+  margin-bottom: -17px;
+  transform: rotate(-20deg);
+}
+
+
+/**************************************************
+	TOOLTIPS
+**************************************************/
+
+[data-skill-id="116"] .tool-tip,
+[data-skill-id="117"] .tool-tip,
+[data-skill-id="118"] .tool-tip,
+[data-skill-id="119"] .tool-tip,
+[data-skill-id="115"] .tool-tip {
+  left: -300px;
+}
+/**************************************************
+	ICON POSITIONS & SPRITES
+**************************************************/
+
+.skill[data-skill-id="110"] {
+  visibility: visible;
+  left: 210px;
+  top: 10px;
+}
+.skill[data-skill-id="111"] {
+  visibility: visible;
+  left: 310px;
+  top: 10px;
+}
+
+.skill[data-skill-id="113"] {
+  visibility: visible;
+  left: 410px;
+  top: 10px;
+}
+
+.skill[data-skill-id="116"] {
+  visibility: visible;
+  left: 510px;
+  top: 10px;
+}
+
+.skill[data-skill-id="117"] {
+  visibility: visible;
+  left: 610px;
+  top: 10px;
+}
+
+.skill[data-skill-id="118"] {
+  visibility: visible;
+  left: 710px;
+  top: 10px;
+}
+
+.skill[data-skill-id="110"] .icon {
+  background-position: -480px -60px;
+}
+.skill[data-skill-id="111"] .icon {
+  background-position: -0px -60px;
+}
+.skill[data-skill-id="113"] .icon {
+  background-position: -420px -60px;
+}
+.skill[data-skill-id="116"] .icon {
+  background-position: -180px -120px;
+}
+.skill[data-skill-id="117"] .icon {
+  background-position: -420px -240px;
+}
+.skill[data-skill-id="118"] .icon {
+  background-position: -480px -0px;
+}
+/*Zweite Reihe*/
+
+.skill[data-skill-id="112"] {
+  visibility: visible;
+  left: 260px;
+  top: 135px;
+}
+
+.skill[data-skill-id="114"] {
+  visibility: visible;
+  left: 410px;
+  top: 135px;
+}
+
+.skill[data-skill-id="119"] {
+  visibility: visible;
+  left: 660px;
+  top: 135px;
+}
+
+.skill[data-skill-id="112"] .icon {
+  background-position: -180px -180px;
+}
+.skill[data-skill-id="114"] .icon {
+  background-position: -420px -60px;
+}
+.skill[data-skill-id="119"] .icon {
+  background-position: -180px -60px;
+}
+/*Dritte Reihe*/
+
+.skill[data-skill-id="115"] {
+  visibility: visible;
+  left: 510px;
+  top: 260px;
+}
+
+.skill[data-skill-id="115"] .icon {
+  background-position: -240px -180px;
+}
+
