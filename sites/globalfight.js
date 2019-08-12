@@ -1,6 +1,5 @@
 var charsImGame = [];
 
-
 //Hier wird im wesentlichen die Karte beschrieben
 var thecanvas = document.getElementsByClassName("leinwand")[0]; //Die erste (und einzige!) Canvas
 //var thecanvas = document.getElementById("leinwand");
@@ -54,6 +53,14 @@ function optionenInMap(mymodus, felderanzahl, contentZeichenketten){
             ctx.stroke(); 
             schreiben(globalGespeicherteZeichenketten[i23], (1+i23*2)*(thecanvas.height-100)/(2*felderanzahl) + 100, 0.5); 
         }  
+    } else if (mymodus == 17) {
+        for (i23 = 0; i23 < felderanzahl; i23++) {
+            ctx.beginPath();
+            ctx.moveTo(0, i23*(thecanvas.height)/felderanzahl);
+            ctx.lineTo(thecanvas.width, i23*thecanvas.height/felderanzahl);
+            ctx.stroke(); 
+            schreiben(globalGespeicherteZeichenketten[i23], (1+i23*2)*(thecanvas.height)/(2*felderanzahl), 0.5); 
+        }  
     }
 }
 
@@ -81,6 +88,14 @@ function MausOver(mausx, mausy, mymodus, felderanzahl){
             }
         }
         optionenInMap(13, felderanzahl); 
+    } else if (mymodus == 17){
+        for (i24 = 0; i24 < felderanzahl; i24++) {
+            if (mausy >= i24*(thecanvas.height)/felderanzahl && mausy < ((i24+1)*(thecanvas.height))/felderanzahl) {
+                ctx.beginPath();
+                ctx.rect(0, i24*(thecanvas.height)/felderanzahl, thecanvas.width, (thecanvas.height)/felderanzahl);
+            }
+        }
+        optionenInMap(17, felderanzahl); 
     }
     
 }
