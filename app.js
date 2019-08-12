@@ -21,7 +21,14 @@ idb_request.addEventListener("upgradeneeded", function(event) {
     var storage = this.result.createObjectStore("data", {keyPath: "id", autoIncrement: true}); // create a new object store called data
     //objectStore.createIndex("title", "title", {unique: false}); //Zeile von woanders zum Suchen per Index
     storage.add(kekse); //Cookies hinzufügen
-    storage.add(leerChar); //Einen Adden
+    beispielChar = leerChar;
+    beispielChar.uniqueID = uuidv4(); 
+    beispielChar.waffen.push(weapon[0]); //Den Beispielchar mit ID und Waffe ausstatten MOVES! 
+    for (i = 0; i < beispielChar.waffen[0].standardmoves.length; i++) {
+      beispielChar.waffen[0].wmoves.push(wmove[beispielChar.waffen[0].standardmoves[i]]);
+    }
+    //Das sollte vielleicht doch in global.js
+    storage.add(beispielChar); //Den Beispielchar hinzufügen
     alert("Willkommen!");
 });
 
@@ -31,10 +38,8 @@ idb_request.addEventListener("success", function(event) {
     var storage = database.transaction("data", "readwrite").objectStore("data"); //use  data 
     storage.get(0).addEventListener("success", function(event) {
       chosenChar= this.result.chosenOne; //Den gewählten Char herausfinden
-      storage.get(chosenChar).addEventListener("success", function(event) {
-          document.getElementById("charnamefeld").innerHTML = this.result.name;
-          //this.result.beschreibung = "lololol";
-          //storage.put(this.result); //unnötig
+      storage.get(chosenChar).addEventListener("success", function(event) { 
+        document.getElementById("charnamefeld").innerHTML = this.result.name;
       });
     }); 
     
