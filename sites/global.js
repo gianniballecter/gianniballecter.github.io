@@ -28,8 +28,15 @@ const leerChar = {
   luck: 50,
   angriff: 50,
   inventar: [],
+ /* waffen: [{
+              name: "default",
+              angriff: 2,
+              standardmoves: [0, 1, 2],
+              wmoves: [{name: "default", schaden: 3, angriff: 2}, {name: "test1", schaden: 3, angriff: 2}, {name: "test2", schaden: 3, angriff: 2}]
+          }],*/
   waffen: [],
   chosenWaffe: 0,
+  chilloptionen: ["Verteidigung", "Item", "SPEZIAL"], //im falle keines Angriffs
 
   lp: 5,
   energie: 5,
