@@ -4,14 +4,22 @@ weapon[0] = {
     name: "default",
     schaden: 3,
     angriff: 2,
+    radius: 150, //in px
+    radmaxpunkt: 0.5,
+    radmacht: 0.05, //wie breit beste Stelle ist
     standardmoves: [0, 1, 2],
     wmoves: []
 }
+
+//Wahrscheinlich ist es Weise, die von 0 bis x durchzugehen ohne zu überspringen
 
 weapon[42] = {
     name: "Trollkeule",
     schaden: 3,
     angriff: 2,
+    radius: 200, //in px
+    radmaxpunkt: 0.7,
+    radmacht: 0.2, //wie breit beste Stelle ist
     standardmoves: [0, 1, 2],
     wmoves: []
 }
