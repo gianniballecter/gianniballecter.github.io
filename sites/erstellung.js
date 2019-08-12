@@ -166,6 +166,7 @@ function CESpeichern(){
   addchar.epInsgesamt = 5 + Math.pow(addchar.stufe, 2);
   addchar.ep = addchar.epInsgesamt;
 
+  
   addchar.waffen.push(weapon[0]);
   for (i = 0; i < addchar.waffen[0].standardmoves.length; i++) {
     addchar.waffen[0].wmoves.push(wmove[addchar.waffen[0].standardmoves[i]]);
