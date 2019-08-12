@@ -90,7 +90,7 @@ function kampfStarten(){
             anAlleSchicken("Start");
             //Alle Minions auf erledigt setzen
             for (i = 0; i < charsImGame.length; i++) {
-                if (charsImGame[i].type == 3){document.getElementsByClassName("card2")[i].style.backgroundColor = "#333333";}
+                if (charsImGame[i].type == 3){minion_bewegung(i);}  //AI-Verhalten
             } 
 
             modus = 1;
@@ -126,10 +126,11 @@ function kampfStarten(){
             else if (charsImGame.length == currentChar) { //Von Bewegung zu Kampfentscheidung
                 currentChar = 0; //anAlleSchicken("Kampf");
                 kampf(); //Angriffe erkennen und Infos senden
-                //Alle Minions auf erledigt setzen
+                
+                /*
                 for (i = 0; i < charsImGame.length; i++) {
                     if (charsImGame[i].type == 3){document.getElementsByClassName("card2")[i].style.backgroundColor = "#333333";}
-                } 
+                } */
 
                 modus = 3;
                 restoreMap("Kampf"); ctx.font = "50px Georgia"; ctx.fillText("Wähle deine Aktion!", 20, 100);
@@ -205,7 +206,9 @@ function gotData(data) { //Daten vom Char bekommen!
             }
             else if (snapshot.val().isArray) {
                 document.getElementsByClassName("card2")[findByUID(uID)].style.backgroundColor = "#333333"; 
-                console.log(snapshot.val());
+                charsImGame[findByUID(uID)].information = [];
+                charsImGame[findByUID(uID)].information = snapshot.val();
+                console.log(charsImGame[findByUID(uID)].information);
             } else {console.log(snapshot.val());}
             firebase.database().ref().child("Fight").child("M" + uID).child(uID).set(null); //sinnlos?
         }); 
@@ -332,7 +335,7 @@ function restoreMap(titel){
         }
     }
 
-    if (modus == 4){
+    if (modus >= 3){
         for (i = 0; i < charsImGame.length; i++) {
             kreis_malen(i);
         }
