@@ -25,7 +25,7 @@ function kampf() {
     AngriffNSC = [];
     //Alle Kampfe erkennen Alle SCs durchgehen
     for (i = 0; i < charsImGame.length; i++) { //Die Reihenfolge in der Ini festhalten
-        charsImGame[i].initiative = i;
+        charsImGame[i].initiative = i;  //!!!! In dieser Funktion wird die initiative benutzt um die ids zu speichern
     }
     SCs = charsImGame.filter(element => element.type == 1);
     NSCs = charsImGame.filter(element => element.type != 1);
@@ -33,14 +33,15 @@ function kampf() {
         for (j = 0; j < NSCs.length; j++) { 
             abstand = Math.sqrt((Math.pow((SCs[i].x - NSCs[j].x), 2) + Math.pow((SCs[i].y - NSCs[j].y), 2)));
             if ((abstand - NSCs[j].size) <  SCs[i].radius) { //(SCs Angriff)
-                console.log(SCs[i].name + "s Angriff auf " + NSCs[j].name);
-                AngriffSC.push(SCs[i].initiative);
-                AngriffNSC.push(NSCs[j].initiative);
-                if ((abstand - SCs[i].size) <  NSCs[j].radius) { console.log("beidseitig");Angriffe.push(1); } else { Angriffe.push(2);} //beidseitiger Angriff vs. SCs Angriff
+                //console.log(SCs[i].name + "s Angriff auf " + NSCs[j].name);
+                AngriffSC.push(SCs[i].initiative); //initiative ist hier das i in charsImGame
+                AngriffNSC.push(NSCs[j].initiative); //initiative ist hier das i in charsImGame
+                if ((abstand - SCs[i].size) <  NSCs[j].radius) { //console.log("beidseitig");
+                    Angriffe.push(1); } else { Angriffe.push(2);} //beidseitiger Angriff vs. SCs Angriff
             } else if ((abstand - SCs[i].size) <  NSCs[j].radius) { //NSCs Angriff
-                console.log(NSCs[j].name + "s Angriff auf " + SCs[i].name);
-                AngriffSC.push(SCs[i].initiative);
-                AngriffNSC.push(NSCs[j].initiative);
+                //console.log(NSCs[j].name + "s Angriff auf " + SCs[i].name);
+                AngriffSC.push(SCs[i].initiative); //initiative ist hier das i in charsImGame
+                AngriffNSC.push(NSCs[j].initiative); //initiative ist hier das i in charsImGame
                 Angriffe.push(3);
                 
             }
@@ -51,11 +52,16 @@ function kampf() {
     for (i = 0; i < charsImGame.length; i++) { 
         messageBuilder = [];
         for (k = 0; k < Angriffe.length; k++) { 
-            if (charsImGame[i].type == 1 && Angriffe[k] != 3 && AngriffSC[k] == i) {messageBuilder.push(NSCs[k].initialen);}
-            if (charsImGame[i].type == 2 && Angriffe[k] != 2 && AngriffNSC[k] == i) {messageBuilder.push(SCs[k].initialen);}
+            if (charsImGame[i].type == 1 && Angriffe[k] != 3 && AngriffSC[k] == i) {messageBuilder.push(charsImGame[AngriffNSC[k]].initialen);}
+            if (charsImGame[i].type >= 2 && Angriffe[k] != 2 && AngriffNSC[k] == i) {messageBuilder.push(charsImGame[AngriffSC[k]].initialen);}
         }
         if (messageBuilder.length < 1) {messageBuilder = "Chillen";} //Jetzt nochmal durchgehen, wer frei steht
-        if (charsImGame[i].type <= 2) {firebase.database().ref().child("Fight").child(charsImGame[i].uniqueID + charsImGame[i].type).set(messageBuilder); } //Abschicken
+
+        if (charsImGame[i].type <= 2) {
+            firebase.database().ref().child("Fight").child(charsImGame[i].uniqueID + charsImGame[i].type).set(messageBuilder);  //Abschicken
+        } else if (charsImGame[i].type == 3) {
+            minion_kampfmoves(i, messageBuilder);
+        }
     }
     aktuellerAngriff = 0;
 }
@@ -66,6 +72,7 @@ function nextAttack(){
        
         schreiben(charsImGame[AngriffSC[aktuellerAngriff]].initialen, 100, 0.2);
         schreiben(charsImGame[AngriffNSC[aktuellerAngriff]].initialen, 100, 0.8);
+        if (Angriffe[aktuellerAngriff] == 1) { schreiben("beidseitig", 100, 0.5); }
         document.getElementById("onlybuttonhere").innerText = "Weiter!";
 
         aktuellerAngriff += 1;
@@ -111,14 +118,14 @@ function transformChar(charakter, typus){
     neuerChar.lp_now = neuerChar.lp;
     neuerChar.energie_now = neuerChar.energie;
 
-    neuerChar.radius = 150;
-    neuerChar.radmaxpunkt = 0.5;
-    neuerChar.radmacht = 0.05;
+    neuerChar.radius = neuerChar.waffen[neuerChar.chosenWaffe].radius;
+    neuerChar.radmaxpunkt = neuerChar.waffen[neuerChar.chosenWaffe].radmaxpunkt;
+    neuerChar.radmacht = neuerChar.waffen[neuerChar.chosenWaffe].radmacht;
 
     //Falls die Grenzen vom Maxpunkt getroffen wurden, muss dieser entsprechend radMacht verschoben werden
-    if (neuerChar.radmaxpunkt > neuerChar.radmacht) {
+    if (neuerChar.radmaxpunkt < neuerChar.radmacht) {
         neuerChar.radmaxpunkt += neuerChar.radmacht;
-    } else if (1 - neuerChar.radmaxpunkt > neuerChar.radmacht) {
+    } else if (1 - neuerChar.radmaxpunkt < neuerChar.radmacht) {
         neuerChar.radmaxpunkt -= neuerChar.radmacht;
     }
 
@@ -147,5 +154,3 @@ function transformChar(charakter, typus){
     }
     return neuerChar;
 }
-
-
