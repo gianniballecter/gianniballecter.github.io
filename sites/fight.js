@@ -1,7 +1,7 @@
 var chosenChar = parseInt(getUrlVars()["char"]);
 var team = parseInt(getUrlVars()["team"]);
 
-var modus = 0; //10 = leer, 11 = Bewegung, 13 Kampfentscheidung
+var modus = 0; //10 = leer, 11 = Bewegung, 13 Kampfentscheidung, 17 Chillentschedung
 var uniqueID = "Error7" + team;
 
 thecanvas.addEventListener('click', onClick, false); 
@@ -53,7 +53,7 @@ function gotData(data) {
         optionenInMap(11, 3);
     } else if (data.val() == null) {
          //Do nothing
-    }else if (data.val().isArray) {
+    } else if (data.val().isArray) {
         angriffsoptionen = []; 
         answerBuilder = [];
         chosenFeind = 0;
@@ -67,6 +67,19 @@ function gotData(data) {
                 } //alle möglichen Moves aufschreiben
                 optionenInMap(13, angriffsoptionen.length, angriffsoptionen);   
                 schreiben(feinde[chosenFeind],50, 0.5);     
+              }   
+        }
+    } else if (data.val() == "Chillen") {
+        angriffsoptionen = []; //In diesem Fall Chilloptionen
+        answerBuilder = [];
+        modus = 17;
+        if (database) { 
+            var storage = database.transaction("data", "readwrite").objectStore("data"); 
+            storage.get(chosenChar).onsuccess = function(event) {      
+                for (i22 = 0; i22 < this.result.chilloptionen.length; i22++) {
+                    angriffsoptionen.push(this.result.chilloptionen[i22]);
+                } //alle möglichen Moves aufschreiben
+                optionenInMap(17, angriffsoptionen.length, angriffsoptionen);        
               }   
         }
     } else {
@@ -97,15 +110,24 @@ function onClick(event){
         modus = 10;
         optionenInMap(10, 0);
     } else if (modus == 13){
-        //TODO wir wollen hier auch einen Vektor an Angriffsantworten zurückgeben
         for (i29 = 0; i29 < angriffsoptionen.length; i29++) {
             if (cy >= i29*(thecanvas.height-100)/angriffsoptionen.length +100 && cy < ((i29+1)*(thecanvas.height-100))/angriffsoptionen.length + 100) {
-                answerBuilder.push(feinde[chosenFeind] + "#trenner#" + angriffsoptionen[i29]);
-                if (answerBuilder.length == feinde.length) { //Wenn wir für alle eine Antworten haben gehts ab.
+                answerBuilder.push(feinde[chosenFeind]);
+                answerBuilder.push(angriffsoptionen[i29]);
+                if (answerBuilder.length == feinde.length*2) { //Wenn wir für alle eine Antworten haben gehts ab.
                     firebase.database().ref().child("Fight").child("M" + uniqueID).child(uniqueID).set(answerBuilder); //Erst bei der letzten Antwort
                     modus = 10;
                     optionenInMap(10, 0);
                 } else {chosenFeind+=1;}
+            }
+        }  
+    } else if (modus == 17){
+        for (i29 = 0; i29 < angriffsoptionen.length; i29++) {
+            if (cy >= i29*thecanvas.height/angriffsoptionen.length && cy < ((i29+1)*thecanvas.height)/angriffsoptionen.length) {
+                firebase.database().ref().child("Fight").child("M" + uniqueID).child(uniqueID).set(angriffsoptionen[i29]);
+                modus = 10;
+                optionenInMap(10, 0);
+               
             }
         }
         
@@ -119,6 +141,8 @@ function onOver(event){
     if (modus == 11){ MausOver(cx, cy, 11, 0)} else if (modus == 13){ 
         MausOver(cx, cy, 13, angriffsoptionen.length)
         schreiben(feinde[chosenFeind],50, 0.5); 
+    } else if (modus == 17){ 
+        MausOver(cx, cy, 17, angriffsoptionen.length)
     }
 }
 
